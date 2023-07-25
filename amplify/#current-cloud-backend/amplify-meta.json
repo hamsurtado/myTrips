@@ -1,0 +1,16 @@
+{
+    "providers": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-mytrips-testing-153355-authRole",
+            "UnauthRoleArn": "arn:aws:iam::010060798741:role/amplify-mytrips-testing-153355-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::010060798741:role/amplify-mytrips-testing-153355-authRole",
+            "Region": "us-west-2",
+            "DeploymentBucketName": "amplify-mytrips-testing-153355-deployment",
+            "UnauthRoleName": "amplify-mytrips-testing-153355-unauthRole",
+            "StackName": "amplify-mytrips-testing-153355",
+            "StackId": "arn:aws:cloudformation:us-west-2:010060798741:stack/amplify-mytrips-testing-153355/820ee690-2c04-11ee-ac51-025007f816bd",
+            "AmplifyAppId": "d2cqnti5knqdgi"
+        }
+    },
+    "hosting": {}
+}
