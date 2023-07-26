@@ -1,5 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
+import Amplify, {API} from "aws-amplify";
+import React from "react";
 
 function App() {
   return (
