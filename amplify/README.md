@@ -1,4 +1,5 @@
 Testing the amplify to git sync 
+Test commit for sync
 
 
 # Getting Started with Amplify CLI
