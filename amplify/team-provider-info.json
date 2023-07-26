@@ -1,0 +1,26 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-mytrips-dev-81604-authRole",
+      "UnauthRoleArn": "arn:aws:iam::010060798741:role/amplify-mytrips-dev-81604-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::010060798741:role/amplify-mytrips-dev-81604-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-mytrips-dev-81604-deployment",
+      "UnauthRoleName": "amplify-mytrips-dev-81604-unauthRole",
+      "StackName": "amplify-mytrips-dev-81604",
+      "StackId": "arn:aws:cloudformation:us-west-2:010060798741:stack/amplify-mytrips-dev-81604/2cf4bb00-2afe-11ee-a256-0afaeef46f2f",
+      "AmplifyAppId": "d15kjgh2k460db"
+    },
+    "categories": {
+      "function": {
+        "AIitineraryhandler": {
+          "deploymentBucketName": "amplify-mytrips-dev-81604-deployment",
+          "s3Key": "amplify-builds/AIitineraryhandler-5a7a6144614a546d7646-build.zip"
+        }
+      },
+      "api": {
+        "mytripsapi1": {}
+      }
+    }
+  }
+}

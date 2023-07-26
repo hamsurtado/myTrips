@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/itinerary/generate": {
+      "name": "/itinerary/generate",
+      "lambdaFunction": "AIitineraryhandler",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

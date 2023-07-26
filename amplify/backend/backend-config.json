@@ -1,0 +1,43 @@
+{
+  "api": {
+    "mytripsapi1": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "AIitineraryhandler"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
+  "function": {
+    "AIitineraryhandler": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_AIitineraryhandler_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "AIitineraryhandler"
+        }
+      ]
+    },
+    "AMPLIFY_function_AIitineraryhandler_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "AIitineraryhandler"
+        }
+      ]
+    }
+  }
+}
