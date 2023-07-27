@@ -38,12 +38,6 @@
     "categories": {
       "function": {
         "AIitineraryhandler": {}
-      },
-      "hosting": {
-        "amplifyhosting": {
-          "appId": "d2cqnti5knqdgi",
-          "type": "cicd"
-        }
       }
     }
   }
