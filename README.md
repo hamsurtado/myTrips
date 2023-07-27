@@ -1,5 +1,4 @@
-*** testing CD/CI ***
-
+demo for CI/CD
 
 # Getting Started with Create React App
 
