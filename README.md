@@ -1,4 +1,4 @@
-demo for CI/CD
+demonstration CI/CD
 
 # Getting Started with Create React App
 
