@@ -1,6 +1,6 @@
 {
   "api": {
-    "mytripsapi1": {
+    "dynamodb": {
       "dependsOn": [
         {
           "attributes": [
@@ -8,7 +8,7 @@
             "Arn"
           ],
           "category": "function",
-          "resourceName": "AIitineraryhandler"
+          "resourceName": "dynamodbtrips"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -16,11 +16,30 @@
     }
   },
   "function": {
-    "AIitineraryhandler": {
+    "dynamodbtrips": {
       "build": true,
+      "dependsOn": [],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     }
   },
-  "hosting": {}
+  "hosting": {},
+  "parameters": {
+    "AMPLIFY_function_dynamodbtrips_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "dynamodbtrips"
+        }
+      ]
+    },
+    "AMPLIFY_function_dynamodbtrips_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "dynamodbtrips"
+        }
+      ]
+    }
+  }
 }

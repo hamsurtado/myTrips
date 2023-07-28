@@ -13,26 +13,59 @@
     }
   },
   "api": {
-    "mytripsapi1": {
+    "dynamodb": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
       "dependsOn": [
         {
+          "category": "function",
+          "resourceName": "dynamodbtrips",
           "attributes": [
             "Name",
             "Arn"
-          ],
-          "category": "function",
-          "resourceName": "AIitineraryhandler"
+          ]
         }
       ],
-      "providerPlugin": "awscloudformation",
-      "service": "API Gateway"
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-mytrips-testing-153355-deployment/amplify-cfn-templates/api/dynamodb-cloudformation-template.json",
+        "logicalId": "apidynamodb"
+      },
+      "lastPushTimeStamp": "2023-07-28T01:19:45.170Z",
+      "output": {
+        "ApiName": "dynamodb",
+        "RootUrl": "https://5e5rgx8wgh.execute-api.us-west-2.amazonaws.com/testing",
+        "ApiId": "5e5rgx8wgh"
+      },
+      "lastPushDirHash": "vGmwux8Cam+nh5qgy+L6VOumTUU="
     }
   },
   "function": {
-    "AIitineraryhandler": {
+    "dynamodbtrips": {
       "build": true,
       "providerPlugin": "awscloudformation",
-      "service": "Lambda"
+      "service": "Lambda",
+      "dependsOn": [],
+      "lastBuildTimeStamp": "2023-07-28T01:17:09.615Z",
+      "lastBuildType": "PROD",
+      "lastPackageTimeStamp": "2023-07-28T01:17:10.706Z",
+      "distZipFilename": "dynamodbtrips-4d43503441357a316558-build.zip",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-mytrips-testing-153355-deployment",
+        "s3Key": "amplify-builds/dynamodbtrips-4d43503441357a316558-build.zip"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-mytrips-testing-153355-deployment/amplify-cfn-templates/function/dynamodbtrips-cloudformation-template.json",
+        "logicalId": "functiondynamodbtrips"
+      },
+      "lastPushTimeStamp": "2023-07-28T01:19:45.170Z",
+      "output": {
+        "LambdaExecutionRoleArn": "arn:aws:iam::010060798741:role/mytripsLambdaRole679873f6-testing",
+        "Region": "us-west-2",
+        "Arn": "arn:aws:lambda:us-west-2:010060798741:function:dynamodbtrips-testing",
+        "Name": "dynamodbtrips-testing",
+        "LambdaExecutionRole": "mytripsLambdaRole679873f6-testing"
+      },
+      "lastPushDirHash": "xDBpsxDyZSrNpjIryQdNxaCfNew="
     }
   },
   "hosting": {}

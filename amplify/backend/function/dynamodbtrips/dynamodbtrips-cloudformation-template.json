@@ -47,12 +47,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "AIitineraryhandler",
+            "dynamodbtrips",
             {
               "Fn::Join": [
                 "",
                 [
-                  "AIitineraryhandler",
+                  "dynamodbtrips",
                   "-",
                   {
                     "Ref": "env"
@@ -89,12 +89,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "mytripsLambdaRolec622132e",
+            "mytripsLambdaRole679873f6",
             {
               "Fn::Join": [
                 "",
                 [
-                  "mytripsLambdaRolec622132e",
+                  "mytripsLambdaRole679873f6",
                   "-",
                   {
                     "Ref": "env"

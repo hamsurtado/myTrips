@@ -37,7 +37,13 @@
     },
     "categories": {
       "function": {
-        "AIitineraryhandler": {}
+        "dynamodbtrips": {
+          "deploymentBucketName": "amplify-mytrips-testing-153355-deployment",
+          "s3Key": "amplify-builds/dynamodbtrips-4d43503441357a316558-build.zip"
+        }
+      },
+      "api": {
+        "dynamodb": {}
       }
     }
   }

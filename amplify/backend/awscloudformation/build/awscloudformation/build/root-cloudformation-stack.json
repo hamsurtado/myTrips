@@ -152,35 +152,35 @@
         }
       }
     },
-    "functionAIitineraryhandler": {
+    "apidynamodb": {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
-        "TemplateURL": "https://s3.amazonaws.com/amplify-mytrips-dev-81604-deployment/amplify-cfn-templates/function/AIitineraryhandler-cloudformation-template.json",
+        "TemplateURL": "https://s3.amazonaws.com/amplify-mytrips-testing-153355-deployment/amplify-cfn-templates/api/dynamodb-cloudformation-template.json",
         "Parameters": {
-          "deploymentBucketName": "amplify-mytrips-dev-81604-deployment",
-          "s3Key": "amplify-builds/AIitineraryhandler-5a7a6144614a546d7646-build.zip",
-          "env": "dev"
-        }
-      }
-    },
-    "apimytripsapi1": {
-      "Type": "AWS::CloudFormation::Stack",
-      "Properties": {
-        "TemplateURL": "https://s3.amazonaws.com/amplify-mytrips-dev-81604-deployment/amplify-cfn-templates/api/mytripsapi1-cloudformation-template.json",
-        "Parameters": {
-          "functionAIitineraryhandlerName": {
+          "functiondynamodbtripsName": {
             "Fn::GetAtt": [
-              "functionAIitineraryhandler",
+              "functiondynamodbtrips",
               "Outputs.Name"
             ]
           },
-          "functionAIitineraryhandlerArn": {
+          "functiondynamodbtripsArn": {
             "Fn::GetAtt": [
-              "functionAIitineraryhandler",
+              "functiondynamodbtrips",
               "Outputs.Arn"
             ]
           },
-          "env": "dev"
+          "env": "testing"
+        }
+      }
+    },
+    "functiondynamodbtrips": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-mytrips-testing-153355-deployment/amplify-cfn-templates/function/dynamodbtrips-cloudformation-template.json",
+        "Parameters": {
+          "deploymentBucketName": "amplify-mytrips-testing-153355-deployment",
+          "s3Key": "amplify-builds/dynamodbtrips-4d43503441357a316558-build.zip",
+          "env": "testing"
         }
       }
     }
