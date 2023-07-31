@@ -3,12 +3,41 @@
 
 const awsmobile = {
     "aws_project_region": "us-west-2",
-    "aws_cloud_logic_custom": [
-        {
-            "name": "dynamodb",
-            "endpoint": "https://5e5rgx8wgh.execute-api.us-west-2.amazonaws.com/testing",
-            "region": "us-west-2"
-        }
+    "aws_cognito_identity_pool_id": "us-west-2:152d02ed-f59b-47f3-846d-12f3f6968eeb",
+    "aws_cognito_region": "us-west-2",
+    "aws_user_pools_id": "us-west-2_zIBFX2X1U",
+    "aws_user_pools_web_client_id": "2aianki8qoub4peq7nct0tmcrv",
+    "oauth": {
+        "domain": "mytripsce01cd9d-ce01cd9d-testing.auth.us-west-2.amazoncognito.com",
+        "scope": [
+            "phone",
+            "email",
+            "openid",
+            "profile",
+            "aws.cognito.signin.user.admin"
+        ],
+        "redirectSignIn": "https://main.d2cqnti5knqdgi.amplifyapp.com/",
+        "redirectSignOut": "https://main.d2cqnti5knqdgi.amplifyapp.com/",
+        "responseType": "code"
+    },
+    "federationTarget": "COGNITO_USER_POOLS",
+    "aws_cognito_username_attributes": [
+        "EMAIL"
+    ],
+    "aws_cognito_social_providers": [],
+    "aws_cognito_signup_attributes": [
+        "EMAIL"
+    ],
+    "aws_cognito_mfa_configuration": "OFF",
+    "aws_cognito_mfa_types": [
+        "SMS"
+    ],
+    "aws_cognito_password_protection_settings": {
+        "passwordPolicyMinLength": 8,
+        "passwordPolicyCharacters": []
+    },
+    "aws_cognito_verification_mechanisms": [
+        "EMAIL"
     ]
 };
 

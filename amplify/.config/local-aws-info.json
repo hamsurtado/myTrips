@@ -4,6 +4,11 @@
     "useProfile": false,
     "awsConfigFilePath": "/Users/samanthahurtado/.amplify/awscloudformation/AScWPmBRHq"
   },
+  "mytrips": {
+    "configLevel": "project",
+    "useProfile": true,
+    "profileName": "ham"
+  },
   "testing": {
     "configLevel": "project",
     "useProfile": true,

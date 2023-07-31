@@ -1,72 +1,63 @@
 {
   "providers": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-mytrips-testing-153355-authRole",
-      "UnauthRoleArn": "arn:aws:iam::010060798741:role/amplify-mytrips-testing-153355-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::010060798741:role/amplify-mytrips-testing-153355-authRole",
+      "AuthRoleName": "amplify-mytrips-testing-192452-authRole",
+      "UnauthRoleArn": "arn:aws:iam::010060798741:role/amplify-mytrips-testing-192452-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::010060798741:role/amplify-mytrips-testing-192452-authRole",
       "Region": "us-west-2",
-      "DeploymentBucketName": "amplify-mytrips-testing-153355-deployment",
-      "UnauthRoleName": "amplify-mytrips-testing-153355-unauthRole",
-      "StackName": "amplify-mytrips-testing-153355",
-      "StackId": "arn:aws:cloudformation:us-west-2:010060798741:stack/amplify-mytrips-testing-153355/820ee690-2c04-11ee-ac51-025007f816bd",
+      "DeploymentBucketName": "amplify-mytrips-testing-192452-deployment",
+      "UnauthRoleName": "amplify-mytrips-testing-192452-unauthRole",
+      "StackName": "amplify-mytrips-testing-192452",
+      "StackId": "arn:aws:cloudformation:us-west-2:010060798741:stack/amplify-mytrips-testing-192452/6f00b720-2f49-11ee-bd5f-021f836915e3",
       "AmplifyAppId": "d2cqnti5knqdgi"
     }
   },
-  "api": {
-    "dynamodb": {
-      "service": "API Gateway",
+  "api": {},
+  "function": {},
+  "hosting": {},
+  "auth": {
+    "mytrips44010338": {
+      "service": "Cognito",
       "providerPlugin": "awscloudformation",
-      "dependsOn": [
-        {
-          "category": "function",
-          "resourceName": "dynamodbtrips",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
-        }
-      ],
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-mytrips-testing-153355-deployment/amplify-cfn-templates/api/dynamodb-cloudformation-template.json",
-        "logicalId": "apidynamodb"
-      },
-      "lastPushTimeStamp": "2023-07-28T01:19:45.170Z",
-      "output": {
-        "ApiName": "dynamodb",
-        "RootUrl": "https://5e5rgx8wgh.execute-api.us-west-2.amazonaws.com/testing",
-        "ApiId": "5e5rgx8wgh"
-      },
-      "lastPushDirHash": "vGmwux8Cam+nh5qgy+L6VOumTUU="
-    }
-  },
-  "function": {
-    "dynamodbtrips": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
       "dependsOn": [],
-      "lastBuildTimeStamp": "2023-07-28T01:17:09.615Z",
-      "lastBuildType": "PROD",
-      "lastPackageTimeStamp": "2023-07-28T01:17:10.706Z",
-      "distZipFilename": "dynamodbtrips-4d43503441357a316558-build.zip",
-      "s3Bucket": {
-        "deploymentBucketName": "amplify-mytrips-testing-153355-deployment",
-        "s3Key": "amplify-builds/dynamodbtrips-4d43503441357a316558-build.zip"
+      "customAuth": false,
+      "frontendAuthConfig": {
+        "socialProviders": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
       },
       "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-mytrips-testing-153355-deployment/amplify-cfn-templates/function/dynamodbtrips-cloudformation-template.json",
-        "logicalId": "functiondynamodbtrips"
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-mytrips-testing-192452-deployment/amplify-cfn-templates/auth/mytrips44010338-cloudformation-template.json",
+        "logicalId": "authmytrips44010338"
       },
-      "lastPushTimeStamp": "2023-07-28T01:19:45.170Z",
+      "lastPushTimeStamp": "2023-07-31T07:50:23.007Z",
       "output": {
-        "LambdaExecutionRoleArn": "arn:aws:iam::010060798741:role/mytripsLambdaRole679873f6-testing",
-        "Region": "us-west-2",
-        "Arn": "arn:aws:lambda:us-west-2:010060798741:function:dynamodbtrips-testing",
-        "Name": "dynamodbtrips-testing",
-        "LambdaExecutionRole": "mytripsLambdaRole679873f6-testing"
+        "UserPoolId": "us-west-2_zIBFX2X1U",
+        "AppClientIDWeb": "2aianki8qoub4peq7nct0tmcrv",
+        "AppClientID": "3l19kaaoopn4edk40duaofhndv",
+        "IdentityPoolId": "us-west-2:152d02ed-f59b-47f3-846d-12f3f6968eeb",
+        "UserPoolArn": "arn:aws:cognito-idp:us-west-2:010060798741:userpool/us-west-2_zIBFX2X1U",
+        "IdentityPoolName": "mytrips44010338_identitypool_44010338__testing",
+        "UserPoolName": "mytrips44010338_userpool_44010338",
+        "HostedUIDomain": "mytripsce01cd9d-ce01cd9d-testing",
+        "OAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://main.d2cqnti5knqdgi.amplifyapp.com/\"],\"LogoutURLs\":[\"https://main.d2cqnti5knqdgi.amplifyapp.com/\"]}"
       },
-      "lastPushDirHash": "xDBpsxDyZSrNpjIryQdNxaCfNew="
+      "lastPushDirHash": "uvuU3ti8f8rtDzGUZlNizXTdxK4="
     }
-  },
-  "hosting": {}
+  }
 }

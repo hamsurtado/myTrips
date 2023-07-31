@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  display: flex;
+  height: 100vh;
 }
 
 .App-logo {
@@ -11,6 +13,32 @@
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+}
+
+.my-sidebar { 
+  height: 100vh;
+  padding: 40px 20px 20px 20px;
+  background-color: rgb(249, 249, 249, 0.7);
+}
+
+.sign-out-button {
+  margin-top: 100px !important;
+}
+
+[data-amplify-authenticator] {
+  margin-top: 150px;
+}
+
+.menu-item {
+  font-weight: 600;
+  text-align: left;
+  color: #1976d2;
+  text-decoration: none;
+}
+
+.main-component {
+  padding-top: 50px;
+  padding-left: 100px;
 }
 
 .App-header {

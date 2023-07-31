@@ -1,45 +1,33 @@
 {
-  "api": {
-    "dynamodb": {
-      "dependsOn": [
-        {
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "category": "function",
-          "resourceName": "dynamodbtrips"
-        }
-      ],
-      "providerPlugin": "awscloudformation",
-      "service": "API Gateway"
-    }
-  },
-  "function": {
-    "dynamodbtrips": {
-      "build": true,
+  "api": {},
+  "auth": {
+    "mytrips44010338": {
+      "customAuth": false,
       "dependsOn": [],
+      "frontendAuthConfig": {
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyCharacters": [],
+          "passwordPolicyMinLength": 8
+        },
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "socialProviders": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
       "providerPlugin": "awscloudformation",
-      "service": "Lambda"
+      "service": "Cognito"
     }
   },
-  "hosting": {},
-  "parameters": {
-    "AMPLIFY_function_dynamodbtrips_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "dynamodbtrips"
-        }
-      ]
-    },
-    "AMPLIFY_function_dynamodbtrips_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "dynamodbtrips"
-        }
-      ]
-    }
-  }
+  "function": {},
+  "hosting": {}
 }

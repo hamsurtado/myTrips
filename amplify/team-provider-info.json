@@ -23,27 +23,39 @@
       }
     }
   },
-  "testing": {
+  "mytrips": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-mytrips-testing-153355-authRole",
-      "UnauthRoleArn": "arn:aws:iam::010060798741:role/amplify-mytrips-testing-153355-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::010060798741:role/amplify-mytrips-testing-153355-authRole",
+      "AuthRoleName": "amplify-mytrips-mytrips-191718-authRole",
+      "UnauthRoleArn": "arn:aws:iam::010060798741:role/amplify-mytrips-mytrips-191718-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::010060798741:role/amplify-mytrips-mytrips-191718-authRole",
       "Region": "us-west-2",
-      "DeploymentBucketName": "amplify-mytrips-testing-153355-deployment",
-      "UnauthRoleName": "amplify-mytrips-testing-153355-unauthRole",
-      "StackName": "amplify-mytrips-testing-153355",
-      "StackId": "arn:aws:cloudformation:us-west-2:010060798741:stack/amplify-mytrips-testing-153355/820ee690-2c04-11ee-ac51-025007f816bd",
+      "DeploymentBucketName": "amplify-mytrips-mytrips-191718-deployment",
+      "UnauthRoleName": "amplify-mytrips-mytrips-191718-unauthRole",
+      "StackName": "amplify-mytrips-mytrips-191718",
+      "StackId": "arn:aws:cloudformation:us-west-2:010060798741:stack/amplify-mytrips-mytrips-191718/602c97b0-2f48-11ee-bb5d-02fc3431179f",
       "AmplifyAppId": "d2cqnti5knqdgi"
     },
     "categories": {
       "function": {
-        "dynamodbtrips": {
-          "deploymentBucketName": "amplify-mytrips-testing-153355-deployment",
-          "s3Key": "amplify-builds/dynamodbtrips-4d43503441357a316558-build.zip"
-        }
-      },
-      "api": {
-        "dynamodb": {}
+        "dynamodbtrips": {}
+      }
+    }
+  },
+  "testing": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-mytrips-testing-192452-authRole",
+      "UnauthRoleArn": "arn:aws:iam::010060798741:role/amplify-mytrips-testing-192452-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::010060798741:role/amplify-mytrips-testing-192452-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-mytrips-testing-192452-deployment",
+      "UnauthRoleName": "amplify-mytrips-testing-192452-unauthRole",
+      "StackName": "amplify-mytrips-testing-192452",
+      "StackId": "arn:aws:cloudformation:us-west-2:010060798741:stack/amplify-mytrips-testing-192452/6f00b720-2f49-11ee-bd5f-021f836915e3",
+      "AmplifyAppId": "d2cqnti5knqdgi"
+    },
+    "categories": {
+      "auth": {
+        "mytrips44010338": {}
       }
     }
   }

@@ -1,27 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
-import Amplify, {API} from "aws-amplify";
 import React from "react";
+import AppContent from "./AppContent";
+import { Authenticator, useAuthenticator } from '@aws-amplify/ui-react';
+
+const formFields = {
+  signUp: {
+    given_name: {
+      order: 1
+    },
+    family_name: {
+      order: 2
+    },
+    birthdate: {
+      order: 3
+    },
+    email: {
+      order:4
+    },
+    password: {
+      order: 5
+    },
+    confirm_password: {
+      order: 6
+    }
+  },
+ }
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const { authStatus } = useAuthenticator(context => [context.authStatus]);
+
+  if (authStatus === 'configuring') return 'Loading...';
+
+  return authStatus !== 'authenticated' ? 
+    <Authenticator formFields={formFields}/> : <AppContent/>;
+    
 }
 
-export default App;
+export default App
