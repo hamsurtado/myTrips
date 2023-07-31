@@ -45,7 +45,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-mytrips-testing-192452-deployment/amplify-cfn-templates/auth/mytrips44010338-cloudformation-template.json",
         "logicalId": "authmytrips44010338"
       },
-      "lastPushTimeStamp": "2023-07-31T07:50:23.007Z",
+      "lastPushTimeStamp": "2023-07-31T19:04:20.104Z",
       "output": {
         "UserPoolId": "us-west-2_zIBFX2X1U",
         "AppClientIDWeb": "2aianki8qoub4peq7nct0tmcrv",
