@@ -25,7 +25,7 @@ function AppContent() {
 
   return (
       <div className="App">
-        <Sidebar className='my-sidebar' collapsedWidth='100px' width='350px' collapsed={!isExpanded}>
+        <Sidebar className='my-sidebar' collapsedWidth='75px' width='350px' collapsed={!isExpanded}>
 
 
           <Menu className='menu' iconShape="square">
