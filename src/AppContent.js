@@ -50,7 +50,7 @@ function AppContent() {
               <MenuItem icon={<AddCircle color='primary' />}>Create Trip</MenuItem>
             </Link>
             
-            <Link to="/mytrips" className="menu-item">
+            <Link to="/my-trips" className="menu-item">
               <MenuItem icon={<Flight color='primary' />}>My Trips</MenuItem>
             </Link>
             
@@ -66,7 +66,7 @@ function AppContent() {
           <Routes>
             <Route path="/create-trip" element={<CreateTrip />} />
             <Route path="/" element={<Home />} />
-            <Route path="/mytrips" element={<MyTrips />} />
+            <Route path="/my-trips" element={<MyTrips />} />
           </Routes>
         </main>
       </div>
