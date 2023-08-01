@@ -152,6 +152,26 @@
         }
       }
     },
+    "apimytrips": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-mytrips-testing-192452-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "Parameters": {
+          "AppSyncApiName": "mytrips",
+          "DynamoDBBillingMode": "PAY_PER_REQUEST",
+          "DynamoDBEnableServerSideEncryption": false,
+          "AuthCognitoUserPoolId": {
+            "Fn::GetAtt": [
+              "authmytrips44010338",
+              "Outputs.UserPoolId"
+            ]
+          },
+          "S3DeploymentBucket": "amplify-mytrips-testing-192452-deployment",
+          "S3DeploymentRootKey": "amplify-appsync-files/997da352f19621fe935981bc11a0f94b63e08bad",
+          "env": "testing"
+        }
+      }
+    },
     "authmytrips44010338": {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {

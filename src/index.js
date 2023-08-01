@@ -8,7 +8,6 @@ import awsExports from "./aws-exports";
 import { BrowserRouter } from "react-router-dom";
 import { Authenticator } from '@aws-amplify/ui-react';
 
-
 Amplify.configure(awsExports);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

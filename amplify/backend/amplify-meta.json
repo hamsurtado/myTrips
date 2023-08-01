@@ -12,7 +12,48 @@
       "AmplifyAppId": "d2cqnti5knqdgi"
     }
   },
-  "api": {},
+  "api": {
+    "mytrips": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "auth",
+          "resourceName": "mytrips44010338",
+          "attributes": [
+            "UserPoolId"
+          ]
+        }
+      ],
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "API_KEY",
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 7
+            }
+          },
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+              "userPoolConfig": {
+                "userPoolId": "authmytrips44010338"
+              }
+            }
+          ]
+        },
+        "GraphQLAPIIdOutput": "db46uiadcngthmc725acqadj4q",
+        "GraphQLAPIEndpointOutput": "https://rxfanbswmrfxjci3tgppike4sy.appsync-api.us-west-2.amazonaws.com/graphql",
+        "GraphQLAPIKeyOutput": "da2-ee5x5i7cdbabteusxh2phrox54"
+      },
+      "lastPushTimeStamp": "2023-07-31T22:38:37.966Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-mytrips-testing-192452-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "logicalId": "apimytrips"
+      },
+      "lastPushDirHash": "5PRKQdEx1jXr5D8tOcsrC21OUqg="
+    }
+  },
   "function": {},
   "hosting": {},
   "auth": {
@@ -45,7 +86,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-mytrips-testing-192452-deployment/amplify-cfn-templates/auth/mytrips44010338-cloudformation-template.json",
         "logicalId": "authmytrips44010338"
       },
-      "lastPushTimeStamp": "2023-07-31T19:04:20.104Z",
+      "lastPushTimeStamp": "2023-07-31T22:38:36.249Z",
       "output": {
         "UserPoolId": "us-west-2_zIBFX2X1U",
         "AppClientIDWeb": "2aianki8qoub4peq7nct0tmcrv",

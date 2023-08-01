@@ -28,8 +28,6 @@ const formFields = {
 function App() {
   const { authStatus } = useAuthenticator(context => [context.authStatus]);
 
-  if (authStatus === 'configuring') return 'Loading...';
-
   return authStatus !== 'authenticated' ? 
     <Authenticator formFields={formFields}/> : <AppContent/>;
     
