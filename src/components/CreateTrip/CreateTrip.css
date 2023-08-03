@@ -6,9 +6,12 @@ form {
   form input,
   form label {
     margin: 10px 0;
+    font-weight: 600;
   }
 
   form input {
+    padding: 10px 12px;
+    font-weight: 400;
     max-width: 90%;
     width: 100%;
     height: 2em;
@@ -23,21 +26,16 @@ input#trip-description {
     height: 3em;
 }
 
-  form input::selection {
+form label {
+  text-align: left;
+}
 
-    border: 0.1px solid rgb(97 109 130 / 50%);
-  }
-
-  form label {
-    text-align: left;
-  }
-
-  button {
-    max-width: 90%;
-    width: 15%;
-    border: none;
-    color: white;
-    background-color: #127082;
-    border-radius: 5px;
-    padding: 6px;
+.create-trip-button {
+  max-width: 90%;
+  width: 15%;
+  border: none;
+  color: white;
+  background-color: #127082;
+  border-radius: 5px;
+  padding: 6px;
 }

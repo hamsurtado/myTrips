@@ -2,13 +2,14 @@ import React from 'react';
 import { listTrips } from '../../graphql/queries';
 import { useEffect, useState } from 'react';
 import { API } from 'aws-amplify';
-
+import * as mutations from '../../graphql/mutations';
+import Trip from './Trip/index.js'
+import TripHome from '../TripDetails/index.js'
+import "./MyTrips.css"
 
 function MyTrips() {
 
   const [trips, setTrips] = useState([]);
-
-
 
   useEffect(() => {
     const getTrips = async() => {
@@ -18,7 +19,7 @@ function MyTrips() {
           variables: {},
           authMode: "AMAZON_COGNITO_USER_POOLS"
         });
-        setTrips(trips.data.listTrips.items                                                                      )
+        setTrips(trips.data.listTrips.items                                                                     )
       } catch (error) {
         console.error('Error creating trip:', error);
       }
@@ -27,13 +28,39 @@ function MyTrips() {
     getTrips(); // run it, run it
   }, []);
 
+  const deleteGivenTrip = async(tripId) => {
+    try {
+      await API.graphql({ 
+        query: mutations.deleteTrip, 
+        variables: { 
+          input: {
+            id: tripId
+          }
+        },
+        authMode: "AMAZON_COGNITO_USER_POOLS"
+      })
 
+      setTrips(trips.filter(trip => trip.id != tripId));
+    } catch (error) {
+      debugger;
+      console.error('Error creating trip:', error);
+    }
+
+  };
+
+  
   return (
     <div>
-      <div className='page-title'>My Trips</div>
-      { trips && trips.map((trip) =>  
-        <li>{trip.name}</li>  
+      <h1>My Trips</h1>
+      <div className='trip-section'>
+        { trips && trips.map((trip) =>  
+          <Trip
+            key={trip.id}
+            trip={trip}
+            onDeleteTrip={deleteGivenTrip}
+          /> 
       )}
+      </div>
     </div>
   );
 }

@@ -1,0 +1,20 @@
+.trip-detail-description{
+    text-align: left;
+    font-size: 1.2em;
+    font-style: italic;
+}
+.trip-detail-button {
+    background-color: #127082;
+    display: block;
+    color: #ffffff;
+    border: none;
+    padding: 6px 12px;
+    text-align: left;
+    text-decoration: none;
+    font-size: 0.9em;
+    /* font-weight: 500; */
+    margin: 1em 0.5em;
+    cursor: pointer;
+    border-radius: 4px;
+    /* height: auto; */
+}

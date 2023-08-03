@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.css';
 import Amplify, {API} from "aws-amplify";
 import { React, useState } from "react";
@@ -13,9 +13,9 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import Home from "./components/Home";
 import MyTrips from "./components/MyTrips";
 import CreateTrip from "./components/CreateTrip";
+import TripDetails from "./components/TripDetails";
+import AddDestination from "./components/TripDetails/AddDestination";
 import "@aws-amplify/ui-react/styles.css";
-
-
 import { useAuthenticator, Button } from '@aws-amplify/ui-react';
 
 
@@ -25,10 +25,23 @@ function AppContent() {
 
   return (
       <div className="App">
-        <Sidebar className='my-sidebar' collapsedWidth='75px' width='350px' collapsed={!isExpanded}>
+        <Sidebar className='my-sidebar' collapsedWidth='5em' width='20em' collapsed={!isExpanded}>
 
 
           <Menu className='menu' iconShape="square">
+
+          <MenuItem 
+                className="no-hover-effect"
+                style={{ textAlign: "center", 'margin-bottom': "90px" }}
+            >
+                {" "}
+                <img className="nimbus" src={process.env.PUBLIC_URL + '/nimbus.png'}/>
+                <div className='nimbus-label'>Nimbus
+                <div className='cloud-companion-label'>My Cloud Companion</div>
+                </div>
+
+                
+            </MenuItem>
 
             <MenuItem
                 className="menu-item"
@@ -36,27 +49,29 @@ function AppContent() {
                 onClick={() => {
                     setIsExpanded(!isExpanded);
                 }}
-                style={{ textAlign: "center", 'margin-bottom': "30px" }}
+                style={{ textAlign: "center", 'font-size': '15px', 'margin-bottom': "30px" }}
             >
                 {" "}
-                <h2>My Trip Planner</h2>
+                <h2>Nimbus</h2>
+
+                
             </MenuItem>
-            
+      
             <Link to="/" className="menu-item">
-              <MenuItem icon={<HomeOutlined color='primary' />} >Home</MenuItem>
+              <MenuItem icon={<HomeOutlined style={{ color: '#68a1b8' }} />} >Home</MenuItem>
             </Link>
 
             <Link to="/create-trip" className="menu-item">
-              <MenuItem icon={<AddCircle color='primary' />}>Create Trip</MenuItem>
+              <MenuItem icon={<AddCircle style={{ color: '#68a1b8' }} />}>Create Trip</MenuItem>
             </Link>
             
             <Link to="/my-trips" className="menu-item">
-              <MenuItem icon={<Flight color='primary' />}>My Trips</MenuItem>
+              <MenuItem icon={<Flight style={{ color: '#68a1b8' }} />}>My Trips</MenuItem>
             </Link>
             
             
 
-            <MenuItem className='sign-out-button menu-item' icon={<LogoutIcon color='primary' />}  onClick={signOut}>Sign Out</MenuItem>
+            <MenuItem className='sign-out-button menu-item' icon={<LogoutIcon style={{ color: '#68a1b8' }} />}  onClick={signOut}>Sign Out</MenuItem>
             
             
           </Menu>
@@ -67,6 +82,8 @@ function AppContent() {
             <Route path="/create-trip" element={<CreateTrip />} />
             <Route path="/" element={<Home />} />
             <Route path="/my-trips" element={<MyTrips />} />
+            <Route path="/trip/:id" element={<TripDetails />} />
+            <Route path="/trip/:id/add-destination" element={<AddDestination/>} />
           </Routes>
         </main>
       </div>

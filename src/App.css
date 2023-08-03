@@ -1,12 +1,8 @@
 .App {
   text-align: center;
   display: flex;
-  height: 100vh;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+  min-height: 100vh;
+  height: auto;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -16,7 +12,8 @@
 }
 
 .my-sidebar { 
-  height: 100vh;
+  min-height: 100vh;
+  height: auto;
   padding: 40px 0;
   background-color: rgb(249, 249, 249, 0.7);
 }
@@ -26,13 +23,35 @@
 }
 
 [data-amplify-authenticator] {
-  transform: translateY(20%);
+  margin-top: 5em;
+}
+
+.nimbus {
+  margin-top: 28px;
+  width: 155px;
+  display: block;
+  margin-left: 5px;
+}
+
+.no-hover-effect:hover a {
+  background-color: inherit !important; 
+  color: inherit !important;
+  cursor:default;
+}
+
+.nimbus-label {
+  position: absolute;
+  margin-left: 120px;
+  margin-top: -57px;
+  color: #8fdade;
+  font-size: 35px;
+  font-weight: 700;
 }
 
 .menu-item {
   font-weight: 600;
   text-align: left;
-  color: #1976d2;
+  color: #68a1b8;
   text-decoration: none;
 }
 
@@ -40,17 +59,36 @@
   padding-top: 50px;
   padding-left: 100px;
   width: 100%;
-  background-color: #e0ebf6;
+  background-color: #e0f3f6;
   border-left: 1px solid rgb(168 189 221 / 20%);
 }
 
-.page-title {
+.cloud-companion-label {
+  position: absolute;
+  font-size: 13px;
+  font-weight: 600;
+  font-style: italic;
+  margin-left: -10px;
+  margin-top: -7px;
+  color: #68a1b7;
+}
+
+h1 {
   text-align: left;
   display: block;
   font-size: 30px;
   font-weight: 600;
-  color: #1876d2;
+  color: #68a1b8;
   margin-bottom: 1.5em;
+}
+
+h2 {
+  text-align: left;
+  display: block;
+  font-size: 20px;
+  font-weight: 600;
+  color: #68a1b8;
+  margin: 2.5em 0em;
 }
 
 .App-header {

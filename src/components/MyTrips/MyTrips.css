@@ -1,0 +1,9 @@
+li {
+    list-style-type: none;
+}
+
+.trip-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

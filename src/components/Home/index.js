@@ -15,7 +15,7 @@ function Home() {
 
   return (
     <div>
-      <div className='page-title'>Welcome, {user && user.attributes.given_name}!</div>
+      <h1>Welcome, {user && user.attributes.given_name}!</h1>
     </div>
   );
 }
