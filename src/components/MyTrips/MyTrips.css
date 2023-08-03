@@ -6,4 +6,5 @@ li {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    color: #68a1b7;
 }
