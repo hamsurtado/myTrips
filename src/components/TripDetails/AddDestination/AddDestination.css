@@ -37,3 +37,23 @@
 .date-range-container {
     text-align: left;
 }
+
+.add-destination-buttons {
+    display: flex;
+    flex-direction: row;
+}
+
+.destination-button {
+    background-color: #127082;
+    display: block;
+    color: #ffffff;
+    border: none;
+    padding: 6px 12px;
+    text-align: left;
+    text-decoration: none;
+    font-size: 0.9em;
+    /* font-weight: 500; */
+    margin: 3em 2.5em 2em 0em;
+    cursor: pointer;
+    border-radius: 4px;
+}

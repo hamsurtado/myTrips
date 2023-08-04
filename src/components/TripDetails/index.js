@@ -8,6 +8,7 @@ function TripDetails() {
     const { id } = useParams();
     const [trip, setTrip] = useState(null)
     const navigate = useNavigate();
+    const destinations = []
 
     useEffect(() => {
         const fetchTrip = async() => {
@@ -26,15 +27,21 @@ function TripDetails() {
     fetchTrip();
     }, [])
 
+
 return(
     <div>
         {trip === null ? '': 
         <div> 
             <h1> Trip - {trip.name} </h1>
             <div className='trip-detail-description'> "{trip.description}"</div>
+            {destinations.length === 0 ? '' :
             <h2>Destinations</h2>
-            <button className='trip-detail-button' onClick={() => navigate(`/trip/${trip.id}/add-destination`)}>Add Destination</button>
-            <button className='trip-detail-button' onClick={() => navigate(`/my-trips`)}>Go Back</button>
+            }
+            
+            <div className='buttons'>
+                <button className='trip-detail-button' onClick={() => navigate(`/my-trips`)}>Go Back</button>
+                <button className='trip-detail-button' onClick={() => navigate(`/trip/${trip.id}/add-destination`)}>Add Destination</button>
+            </div>
         </div>
         }
         
