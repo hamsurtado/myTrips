@@ -1,0 +1,39 @@
+.trip-info-container{
+    display:flex;
+    flex-direction: column;
+}
+
+.search-bar-container{
+    max-width: 27em;
+    margin-bottom: 2em;
+}
+
+.CalendarDay__selected_span {
+    background: #56cfd8 !important;
+}
+
+.CalendarDay__selected, .CalendarDay__selected:active, .CalendarDay__selected:hover {
+    background: #3cadb5 !important;
+}
+
+.CalendarMonth_caption {
+    color: #68a1b7 !important;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #68a1b7;
+    opacity: 1; /* Firefox */
+  }
+
+.DateRangePickerInput_arrow_svg {
+    fill: #68a1b7;
+}
+
+.DateInput_input {
+    color: #68a1b7;
+    font-weight: 400;
+}
+
+.date-range-container {
+    text-align: left;
+}
