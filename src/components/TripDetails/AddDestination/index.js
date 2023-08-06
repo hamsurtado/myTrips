@@ -23,7 +23,7 @@ function AddDestination() {
   const generateItinerary = async () => {
     setIsLoading(true)
     const configuration = new Configuration({
-        apiKey: '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',
+        apiKey: process.env.REACT_APP_CHATGPT_API_KEY
       });
     const openai = new OpenAIApi(configuration);
     const differenceInDays = endDate.diff(startDate, 'days');
