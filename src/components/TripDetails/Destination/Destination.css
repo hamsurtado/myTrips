@@ -1,0 +1,69 @@
+
+.main-destinations {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Aligns items to the start (left) */
+    width: 100%;
+}
+
+.destination-div {
+    box-sizing: border-box;
+    color: #68a1b7;
+    text-align: left;
+    display: flex;
+    padding: 0.75em 2em;
+    align-items: center;
+    width: 95%;
+    background-color: rgb(255 255 255 / 61%);
+    margin-bottom: 2em;
+    border: 0.1px solid rgb(97 109 130 / 74%);
+    border-radius: 5px;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+.destination-buttons {
+    display: flex;
+}
+
+.delete-button::after {
+    content: "";
+    clear: both;
+}
+
+
+.destination-name { 
+    font-size: 1.2em;   
+    text-align: left;
+    font-weight: 600;
+    margin-right: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.destination-description{
+    font-style: italic;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 3em;
+}
+
+.destination-attributes {
+    max-width: 75%;
+}
+
+.destination-button {
+    background-color: #127082;
+    color: #ffffff;
+    border: none;
+    padding: 6px 12px;
+    text-align: right;
+    text-decoration: none;
+    font-size: 0.9em;
+    /* font-weight: 500; */
+    margin: 1em 0.5em;
+    cursor: pointer;
+    border-radius: 4px;
+    /* height: auto; */
+}

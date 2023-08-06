@@ -7,4 +7,16 @@ type Trip @model @auth(rules:[{allow:owner}]){
   name: String!
   description: String
   owner: String
+  destinations: [Destination] @hasMany(indexName: "byTrip", fields: ["id"])
+}
+
+type Destination @model @auth(rules:[{allow:owner}]){
+  id: ID!
+  tripId: ID! @index(name: "byTrip", sortKeyFields: ["id"])
+  startDate: AWSDate  
+  endDate: AWSDate
+  duration: Int       
+  destination: String
+  itinerary: AWSJSON  
+  owner: String
 }

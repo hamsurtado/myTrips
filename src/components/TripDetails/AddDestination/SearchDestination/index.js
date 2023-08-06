@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import Script from 'react-load-script';
 import SearchBar from 'material-ui-search-bar';
 
-const SearchDestination = () => {
+const SearchDestination = (props) => {
  const [query, setQuery] = useState('');
  const [city, setCity] = useState('');
 
@@ -29,6 +29,7 @@ const handleCitySelect = () => {
 
     if (address) {
         setCity(address[0].long_name);
+        props.onDestinationChange(address[0].long_name)
         setQuery(addressObject.formatted_address);
       }
 };
@@ -45,6 +46,7 @@ return (
             placeholder='Search Destination'
             value={query}
             hintText="Search City"
+            city={city}
             style={{
                 margin: '0 auto',
                 maxWidth: 800,

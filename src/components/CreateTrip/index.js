@@ -43,7 +43,6 @@ function CreateTrip() {
   }
 
   
-
   return (
     <div>
       <h1>Create Trip</h1>

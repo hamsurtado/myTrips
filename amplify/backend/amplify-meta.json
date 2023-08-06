@@ -46,12 +46,12 @@
         "GraphQLAPIEndpointOutput": "https://rxfanbswmrfxjci3tgppike4sy.appsync-api.us-west-2.amazonaws.com/graphql",
         "GraphQLAPIKeyOutput": "da2-ee5x5i7cdbabteusxh2phrox54"
       },
-      "lastPushTimeStamp": "2023-08-03T06:58:56.960Z",
+      "lastPushTimeStamp": "2023-08-05T22:31:41.016Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-mytrips-testing-192452-deployment/amplify-cfn-templates/api/cloudformation-template.json",
         "logicalId": "apimytrips"
       },
-      "lastPushDirHash": "5PRKQdEx1jXr5D8tOcsrC21OUqg="
+      "lastPushDirHash": "/0uCez/uOiFYrhgtrGXx/XZ/sKI="
     }
   },
   "function": {},
@@ -86,7 +86,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-mytrips-testing-192452-deployment/amplify-cfn-templates/auth/mytrips44010338-cloudformation-template.json",
         "logicalId": "authmytrips44010338"
       },
-      "lastPushTimeStamp": "2023-08-03T06:58:56.962Z",
+      "lastPushTimeStamp": "2023-08-05T22:31:39.445Z",
       "output": {
         "UserPoolId": "us-west-2_zIBFX2X1U",
         "AppClientIDWeb": "2aianki8qoub4peq7nct0tmcrv",

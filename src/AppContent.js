@@ -17,6 +17,7 @@ import TripDetails from "./components/TripDetails";
 import AddDestination from "./components/TripDetails/AddDestination";
 import "@aws-amplify/ui-react/styles.css";
 import { useAuthenticator, Button } from '@aws-amplify/ui-react';
+import Itinerary from './components/Itinerary';
 
 
 function AppContent() {
@@ -84,6 +85,7 @@ function AppContent() {
             <Route path="/my-trips" element={<MyTrips />} />
             <Route path="/trip/:id" element={<TripDetails />} />
             <Route path="/trip/:id/add-destination" element={<AddDestination/>} />
+            <Route path="/trip/:tripId/destination/:destinationId" element={<Itinerary/>} />
           </Routes>
         </main>
       </div>

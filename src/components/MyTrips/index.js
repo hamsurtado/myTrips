@@ -25,7 +25,7 @@ function MyTrips() {
       }
     };
 
-    getTrips(); // run it, run it
+    getTrips(); 
   }, []);
 
   const deleteGivenTrip = async(tripId) => {
@@ -42,7 +42,6 @@ function MyTrips() {
 
       setTrips(trips.filter(trip => trip.id != tripId));
     } catch (error) {
-      debugger;
       console.error('Error creating trip:', error);
     }
 
@@ -53,7 +52,7 @@ function MyTrips() {
     <div>
       <h1>My Trips</h1>
       <div className='trip-section'>
-        { trips && trips.map((trip) =>  
+        { trips?.map((trip) =>  
           <Trip
             key={trip.id}
             trip={trip}

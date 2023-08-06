@@ -1,14 +1,16 @@
 import React, {useState, useEffect} from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { API } from 'aws-amplify';
-import { getTrip } from '../../graphql/queries';
+import { getTrip, listDestinations } from '../../graphql/queries';
+import Destination from './Destination';
 import "./TripDetails.css"
+import { deleteDestination } from '../../graphql/mutations';
 
 function TripDetails() {
     const { id } = useParams();
     const [trip, setTrip] = useState(null)
     const navigate = useNavigate();
-    const destinations = []
+    const [destinations, setDestinations] = useState([])
 
     useEffect(() => {
         const fetchTrip = async() => {
@@ -19,6 +21,13 @@ function TripDetails() {
                     authMode: "AMAZON_COGNITO_USER_POOLS"
                 });
                 setTrip(response.data.getTrip)
+                const destinationResponse = await API.graphql({
+                    query: listDestinations,    
+                    variables: { filter: {tripId: {eq: id}} },
+                    authMode: "AMAZON_COGNITO_USER_POOLS"
+                });
+                setDestinations(destinationResponse.data.listDestinations.items)
+                debugger;
 
             } catch(error) {
                 console.error('Error getting trip:', error);
@@ -27,6 +36,25 @@ function TripDetails() {
     fetchTrip();
     }, [])
 
+    const deleteGivenDestination = async(destinationId) => {
+        try {
+          await API.graphql({ 
+            query: deleteDestination, 
+            variables: { 
+              input: {
+                id: destinationId
+              }
+            },
+            authMode: "AMAZON_COGNITO_USER_POOLS"
+          })
+    
+          setDestinations(destinations.filter(destination => destination.id !== destinationId));
+        } catch (error) {
+          console.error('Error deleting destination:', error);
+        }
+    
+      };
+    
 
 return(
     <div>
@@ -35,7 +63,16 @@ return(
             <h1> Trip - {trip.name} </h1>
             <div className='trip-detail-description'> "{trip.description}"</div>
             {destinations.length === 0 ? '' :
-            <h2>Destinations</h2>
+            <div className='destinations-container'>
+                <h2>Destinations</h2>
+                { destinations?.map((destination) =>  
+                    <Destination
+                        key={destination.id}
+                        destination={destination}
+                        onDeleteDestination={deleteGivenDestination}
+                    /> 
+                )}
+            </div>
             }
             
             <div className='buttons'>
