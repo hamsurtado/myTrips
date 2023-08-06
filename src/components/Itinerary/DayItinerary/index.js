@@ -7,10 +7,17 @@ const Itinerary = ({ dayNumber, dayItinerary }) => {
 
             <h2> Morning </h2>
             {dayItinerary["morning"]}
+
+
+            {dayItinerary["morning-entity"]}
             <h2> Afternoon </h2>
             {dayItinerary["afternoon"]}
+
+            {dayItinerary["afternoon-entity"]}
             <h2> Evening </h2>
             {dayItinerary["evening"]}
+
+            {dayItinerary["evening-entity"]}
         </div>
     )
 }

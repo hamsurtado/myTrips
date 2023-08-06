@@ -23,7 +23,7 @@ function AddDestination() {
   const generateItinerary = async () => {
     setIsLoading(true)
     const configuration = new Configuration({
-        apiKey: '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',
+        apiKey: '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',
       });
     const openai = new OpenAIApi(configuration);
     const differenceInDays = endDate.diff(startDate, 'days');
