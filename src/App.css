@@ -65,12 +65,12 @@
 }
 
 .main-component-wide {
-  min-width: calc(100% - 5em);
+  min-width: 60em;
+
 }
 
-
 .main-component-small {
-  min-width: calc(100% - 20em);
+  min-width: 60em;
 }
 
 .cloud-companion-label {
