@@ -78,7 +78,7 @@ function AppContent() {
           </Menu>
         </Sidebar>
 
-        <main class='main-component'>
+        <main class={`main-component ${isExpanded ? 'main-component-small' : 'main-component-wide'}`}>
           <Routes>
             <Route path="/create-trip" element={<CreateTrip />} />
             <Route path="/" element={<Home />} />

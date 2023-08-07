@@ -8,6 +8,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { Configuration, OpenAIApi } from "openai";
 import { createDestination } from '../../../graphql/mutations';
 import { API } from 'aws-amplify';
+import logo from './';
 
 
 function AddDestination() {
@@ -18,7 +19,31 @@ function AddDestination() {
   const [focusedInput, setFocusedInput] = useState(null);
   const navigate = useNavigate();
   const {id} = useParams()
-  
+  const BING_ENDPOINT = "https://api.bing.microsoft.com/v7.0/images/search";
+  const BING_API_KEY = process.env.REACT_APP_BING_API_KEY;
+
+  async function retrieveImage(query, size = "Large") {
+    
+    try{
+      const response = await fetch(`${BING_ENDPOINT}?q=${encodeURIComponent(query)}&size=${size}`,
+      {
+        headers:{
+          "Ocp-Apim-Subscription-Key": BING_API_KEY
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      return data.value[0].contentUrl;
+
+    } catch (error) {
+      console.error("Error fetching image", error.message);
+      throw error; 
+    }
+  };
 
   const generateItinerary = async () => {
     setIsLoading(true)
@@ -27,8 +52,14 @@ function AddDestination() {
       });
     const openai = new OpenAIApi(configuration);
     const differenceInDays = endDate.diff(startDate, 'days');
-    const content = `Only respond with the output json and don’t include any other response, 
-                      output will be this JSON structure.
+    const content = `The output should include itinerary for what to do for ${differenceInDays} days, 
+                    from  ${startDate.format('YYYY-MM-DD')} to ${endDate.format('YYYY-MM-DD')}, in ${destination}, where for each time of the day, 
+                    there's a descriptive paragraph containing an itinerary (more than 3-4 sentences). 
+                    The entity corresponds to an entity we can use for an image search API, 
+                    to display an image relevant to the suggestion.
+
+                    Only respond with the output json and don’t include any other response. 
+                      Output will be the following JSON format, but with appropriate content filled in:
                     { 
                         "1": {
                             "morning": "",
@@ -39,21 +70,37 @@ function AddDestination() {
                             "evening-entity":"
                       }
                       "2": { 
-                      .....
-                    }
+                        .....
+                      }
                     }
     
-                    The output should include itinerary for what to do for ${differenceInDays} days, 
-                    from  ${startDate} to ${endDate}, in ${destination}, where for each time of the day, 
-                    there's a descriptive paragraph containing an itinerary (more than 3-4 sentences). 
-                    The entity corresponds to an entity we can use for an image search API, 
-                    to display an image relevant to the suggestion.`
+                    PLEASE INCLUDE ALL DAYS IN YOUR OUTPUT. MAKE SURE NO FIELDS ARE EMPTY.`
    
     try {
       const result = await openai.createChatCompletion({
-        model: "gpt-3.5-turbo",
+        model: "gpt-3.5-turbo-16k",
         messages: [{ role: "user", content: content }],
+        temperature: 0.2
       });
+
+      const headerImage = await retrieveImage(destination, "All");
+
+      const contentData = JSON.parse(result.data.choices[0].message.content);  // Parsing the stringified content
+
+      const itineraryObj = {
+        header: headerImage,
+        content: contentData
+      };
+
+      for (let day in contentData) {
+        if (contentData.hasOwnProperty(day)) { 
+          contentData[day]['morning-img'] = await retrieveImage(destination + " " + contentData[day]['morning-entity'])
+          contentData[day]['afternoon-img'] = await retrieveImage(destination + " " + contentData[day]['afternoon-entity'])
+          contentData[day]['evening-img'] = await retrieveImage(destination + " " + contentData[day]['evening-entity'])
+        } 
+      }
+
+
       const response = await API.graphql({
           query: createDestination,
           variables: {input:{
@@ -62,7 +109,7 @@ function AddDestination() {
             endDate: endDate.format('YYYY-MM-DD'),
             duration: differenceInDays,       
             destination: destination,
-            itinerary: result.data.choices[0].message.content
+            itinerary: JSON.stringify(itineraryObj)
           } },
           authMode: "AMAZON_COGNITO_USER_POOLS"
       });
@@ -72,8 +119,9 @@ function AddDestination() {
       const destinationId = response.data.createDestination.id
 
       navigate(`/trip/${tripId}/destination/${destinationId}`)
-    } catch (e) {
-     
+    } catch (error) {
+      setIsLoading(false)
+      console.log(error)
     }
 
   }
@@ -82,42 +130,49 @@ function AddDestination() {
 
 
   return (
-    <div className={`${isLoading ? 'grayed-out' : ''}`}>
-          <h1>Add Destination</h1>
-          <div className='trip-info-container'>
-            <div className='search-bar-container'>
-              <h2>Where do you want to go?</h2>
-              <SearchDestination
-                onDestinationChange={(destination) => {
-                  setDestination(destination);
-                }}
-              />
-            </div>
-            
-            <div className='date-range-container'>
-              <h2>When are you going?</h2>
-              <DateRangePicker
-                  startDate={startDate} // momentPropTypes.momentObj or null,
-                  startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
-                  endDate={endDate} // momentPropTypes.momentObj or null,
-                  endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
-                  onDatesChange={({ startDate, endDate }) => {
-                      setStartDate(startDate);
-                      setEndDate(endDate);
-                  }} // PropTypes.func.isRequired,
-                  focusedInput={focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
-                  onFocusChange={focusedInput => setFocusedInput(focusedInput)} // PropTypes.func.isRequired,
-              />
-              <div className='add-destination-buttons'>
-                <button className='destination-button' onClick={() => navigate(`/trip/${id}`)}>Go Back </button>
-                <button className='destination-button' onClick={() => generateItinerary()}>Generate Itinerary </button>
+    !isLoading 
+    ? (
+      <div>
+            <h1>Add Destination</h1>
+            <div className='trip-info-container'>
+              <div className='search-bar-container'>
+                <h2>Where do you want to go?</h2>
+                <SearchDestination
+                  onDestinationChange={(destination) => {
+                    setDestination(destination);
+                  }}
+                />
+              </div>
+              
+              <div className='date-range-container'>
+                <h2>When are you going?</h2>
+                <DateRangePicker
+                    startDate={startDate} // momentPropTypes.momentObj or null,
+                    startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
+                    endDate={endDate} // momentPropTypes.momentObj or null,
+                    endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
+                    onDatesChange={({ startDate, endDate }) => {
+                        setStartDate(startDate);
+                        setEndDate(endDate);
+                    }} // PropTypes.func.isRequired,
+                    focusedInput={focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
+                    onFocusChange={focusedInput => setFocusedInput(focusedInput)} // PropTypes.func.isRequired,
+                />
+                <div className='add-destination-buttons'>
+                  <button className='destination-button' onClick={() => navigate(`/trip/${id}`)}>Go Back </button>
+                  <button className='destination-button' onClick={() => generateItinerary()}>Generate Itinerary </button>
+                </div>
               </div>
             </div>
-          </div>
-          {isLoading && (
-            <div className="loading-spinner" />
-          )}
-      </div>
+        </div>
+    ): <div>
+
+      <h1>Generating Itinerary...</h1>
+        <div className="loading-spinner">
+              <img src={process.env.PUBLIC_URL + '/nimbus.png'} alt="Loading" />
+            </div>
+
+            </div>
   );
 }
 

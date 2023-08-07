@@ -35,8 +35,12 @@ const Itinerary = () => {
     
     return (
         <div className='itinerary-container'>
-            <h1>Itinerary</h1>
-            { destination?.itinerary && Object.entries(destination.itinerary).map(([key, value]) => {
+            <div className='itinerary-header-img-container'>
+                <img className='itinerary-header-img' src={destination?.itinerary?.header}/>
+            </div>
+
+            
+            { destination?.itinerary?.content && Object.entries(destination.itinerary.content).map(([key, value]) => {
                 return <DayItinerary
                     dayNumber={key}
                     dayItinerary={value}

@@ -1,3 +1,64 @@
 .itinerary-container {
-    width: 30em;
+}
+
+.itinerary-header-img-container {
+    position: relative;
+    margin-left: -3em;
+    width: calc(100% + 6em);
+    margin-top: -3em;
+    height: 25em;
+    overflow: hidden;
+    border: none;     
+    margin-bottom: 5em;
+    filter: drop-shadow(5px 5px 5px #222);  /* Adds a 5px shadow offset by 5px to the right and down, with a color of #222 */
+
+}
+.itinerary-header-img{
+    width: 100%;
+    margin-top: -5em;
+}
+
+.activity {
+    box-sizing: border-box;
+    text-align: left;
+    display: flex;
+    padding: 3em 3em;
+    font-size: 17px;
+    font-family: serif;
+    align-items: center;
+    background-color: rgb(255 255 255 / 61%);
+    margin-bottom: 2em;
+    border: 0.1px solid rgb(97 109 130 / 74%);
+    border-radius: 0.5em;
+    flex-direction: row;
+    justify-content: space-between
+}
+
+.activity-description {
+    width: 80em;
+    padding-right: 2.5em;
+    color: #68a1b8;
+}
+
+.afternoon-activity-image-container {
+    margin-right: 2.5em;
+}
+
+.activity-image {
+    width: 25em;
+    height: 20em;
+    border: 1px solid #68a1b8;
+    border-radius: 50em
+}
+
+.afternoon-activity-description {
+    padding-right: 0;
+}
+
+.day-header {
+    border-bottom: 1px solid #68a1b8;
+}
+
+h1 {
+    margin-bottom: 1em;
 }

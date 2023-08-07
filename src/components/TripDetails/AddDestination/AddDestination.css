@@ -2,25 +2,72 @@
     pointer-events: none; 
     opacity: 0.5;
  }
+ 
 
- .loading-spinner {
+.loading-spinner {
     position: fixed;
+    top: 2em;
+    left: 5em;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    width: 20em;
+    height: 20em;
+    overflow: hidden;
+    position: relative;
+    animation: bounce 4s infinite;
+}
+
+.loading-spinner::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('../../../../public/nimbus.png') no-repeat center / contain;
+    filter: grayscale(100%);
+    z-index: 0;
+}
+
+.loading-spinner img {
+    width: 100%;
+    transform: translate(-50%, -50%);
+    position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1000; 
-    border: 16px solid #f3f3f3;
-    border-top: 16px solid #3498db;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    animation: spin 2s linear infinite;
-  }
-  
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
+    z-index: 1;
+    clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+    animation: reveal 2s infinite;
+}
+
+@keyframes reveal {
+    0% {
+        clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+    }
+    100% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translate(0, 0);
+    }
+    15% {
+        transform: translate(-50px, -50px); /* Slight diagonal bounce to top-left */
+    }
+    40% {
+        transform: translate(0, 0); /* Slight diagonal bounce to top-left */
+    }
+    55% {
+        transform: translate(50px, -50px);  /* Slight diagonal bounce to bottom-right */
+    }
+    70% {
+        transform: translate(0, 0);  /* Slight diagonal bounce to bottom-right */
+    }
+}
+
+
 
 .trip-info-container{
     display:flex;
