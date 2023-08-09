@@ -6,14 +6,20 @@ const Trip = ({trip, onDeleteTrip}) => {
     const navigate = useNavigate();
     
     return (
-        <div className='trip-div'>
-            <div className='trip-attributes'>
-                <div className='trip-name'>{trip.name}</div>
-                <div className='trip-description'>{trip.description}</div>
-            </div>
-            <div className='trip-buttons'>
-                <button className='trip-button' onClick={() => onDeleteTrip(trip.id)}> Delete Trip</button>
-                <button className='trip-button' onClick={() => navigate(`/trip/${trip.id}`)}> Edit Trip</button>
+        <div className='nimbus-card' onClick={() => navigate(`/trip/${trip.id}`)}>
+            <div className='nimbus-card-img-container'  style={{ backgroundImage: `url(${trip.imageURL})` }}/>
+
+
+
+            <div className='nimbus-card-details'>
+                <div className='trip-attributes'>
+                    <div className='trip-name'>{trip.name}</div>
+                    <div className='trip-description'>"{trip.description}"</div>
+                </div>
+                <div className='trip-buttons'>
+                    <button className='nimbus-button' onClick={(e) => { onDeleteTrip(trip.id); e.stopPropagation()}}> Delete Trip</button>
+                    <button className='nimbus-button' onClick={(e) => { navigate(`/trip/${trip.id}`); e.stopPropagation()} }> Edit Trip</button>
+                </div>
             </div>
         </div>
     )

@@ -8,7 +8,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { Configuration, OpenAIApi } from "openai";
 import { createDestination } from '../../../graphql/mutations';
 import { API } from 'aws-amplify';
-import logo from './';
+import retrieveImage from '../../../utils/retrieveImage';
 
 
 function AddDestination() {
@@ -16,34 +16,13 @@ function AddDestination() {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [destination, setDestination] = useState(null);
+
+  const isDisabled = !destination || !startDate || !endDate;
+
   const [focusedInput, setFocusedInput] = useState(null);
   const navigate = useNavigate();
   const {id} = useParams()
-  const BING_ENDPOINT = "https://api.bing.microsoft.com/v7.0/images/search";
-  const BING_API_KEY = process.env.REACT_APP_BING_API_KEY;
 
-  async function retrieveImage(query, size = "Large") {
-    
-    try{
-      const response = await fetch(`${BING_ENDPOINT}?q=${encodeURIComponent(query)}&size=${size}`,
-      {
-        headers:{
-          "Ocp-Apim-Subscription-Key": BING_API_KEY
-        }
-      });
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-
-      const data = await response.json();
-      return data.value[0].contentUrl;
-
-    } catch (error) {
-      console.error("Error fetching image", error.message);
-      throw error; 
-    }
-  };
 
   const generateItinerary = async () => {
     setIsLoading(true)
@@ -159,8 +138,8 @@ function AddDestination() {
                     onFocusChange={focusedInput => setFocusedInput(focusedInput)} // PropTypes.func.isRequired,
                 />
                 <div className='add-destination-buttons'>
-                  <button className='destination-button' onClick={() => navigate(`/trip/${id}`)}>Go Back </button>
-                  <button className='destination-button' onClick={() => generateItinerary()}>Generate Itinerary </button>
+                  <button className='nimbus-button' onClick={() => navigate(`/trip/${id}`)}>Go Back </button>                  
+                  <button className='nimbus-button' disabled={isDisabled}  onClick={() => generateItinerary()}>Generate Itinerary </button>
                 </div>
               </div>
             </div>

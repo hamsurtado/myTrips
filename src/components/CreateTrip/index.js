@@ -3,6 +3,8 @@ import {API} from 'aws-amplify';
 import "./CreateTrip.css"
 import { createTrip } from '../../graphql/mutations';
 import { useNavigate } from 'react-router-dom';
+import retrieveImage from '../../utils/retrieveImage';
+
 
 
 function CreateTrip() {
@@ -17,16 +19,25 @@ function CreateTrip() {
  
   const handleSubmit = async(event) => {
     event.preventDefault();
+    
 
     try {
+
+      let tripImageURL = await retrieveImage(tripData.name)
+
+
       let response = await API.graphql({
         query: createTrip,
-        variables: {input: tripData},
+        variables: {input: {
+          name: tripData.name,
+          description: tripData.description,
+          imageURL: tripImageURL
+        }},
         authMode: "AMAZON_COGNITO_USER_POOLS"
       });
       
 
-      navigate(`/trip/${response.data.createTrip.id}`); 
+      navigate(`/trip/${response.data.createTrip.id}/add-destination`); 
     } catch (error) {
       console.error('Error creating trip:', error);
     };
@@ -64,7 +75,7 @@ function CreateTrip() {
               name='description'
               onChange={handleChange}
             />
-        <button className='create-trip-button' type='submit'>Create Trip</button>
+        <button className='nimbus-button' style={{width: 7 + 'em'}} type='submit'>Create Trip</button>
       </form>
     </div>
   );

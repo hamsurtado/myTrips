@@ -8,6 +8,7 @@ export const getTrip = /* GraphQL */ `
       name
       description
       owner
+      imageURL
       destinations {
         items {
           id
@@ -43,6 +44,7 @@ export const listTrips = /* GraphQL */ `
         name
         description
         owner
+        imageURL
         destinations {
           nextToken
           __typename

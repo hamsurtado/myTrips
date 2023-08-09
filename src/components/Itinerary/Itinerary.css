@@ -1,4 +1,5 @@
 .itinerary-container {
+    color: #68a1b8;
 }
 
 .itinerary-header-img-container {
@@ -37,7 +38,6 @@
 .activity-description {
     width: 80em;
     padding-right: 2.5em;
-    color: #68a1b8;
 }
 
 .afternoon-activity-image-container {
@@ -61,4 +61,12 @@
 
 h1 {
     margin-bottom: 1em;
+}
+
+.itinerary-location-header {
+    text-align: center;
+    font-size: 40px;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 2em;
 }

@@ -6,7 +6,7 @@ import Destination from './Destination';
 import "./TripDetails.css"
 import { deleteDestination } from '../../graphql/mutations';
 
-function TripDetails() {
+function TripDetails({ isExpanded }) {
     const { id } = useParams();
     const [trip, setTrip] = useState(null)
     const navigate = useNavigate();
@@ -27,7 +27,6 @@ function TripDetails() {
                     authMode: "AMAZON_COGNITO_USER_POOLS"
                 });
                 setDestinations(destinationResponse.data.listDestinations.items)
-                debugger;
 
             } catch(error) {
                 console.error('Error getting trip:', error);
@@ -57,31 +56,47 @@ function TripDetails() {
     
 
 return(
+    
     <div>
         {trip === null ? '': 
-        <div> 
+        
+        <div className='nimbus-card-trip-detail'>
+            <div className='nimbus-card-img-container'  style={{ backgroundImage: `url(${trip.imageURL})` }}/>
+
+
+
+            <div className='nimbus-card-trip-detail-details'>
+            
+
             <h1> Trip - {trip.name} </h1>
             <div className='trip-detail-description'> "{trip.description}"</div>
-            {destinations.length === 0 ? '' :
-            <div className='destinations-container'>
-                <h2>Destinations</h2>
-                { destinations?.map((destination) =>  
-                    <Destination
-                        key={destination.id}
-                        destination={destination}
-                        onDeleteDestination={deleteGivenDestination}
-                    /> 
-                )}
-            </div>
-            }
+
             
-            <div className='buttons'>
-                <button className='trip-detail-button' onClick={() => navigate(`/my-trips`)}>Go Back</button>
-                <button className='trip-detail-button' onClick={() => navigate(`/trip/${trip.id}/add-destination`)}>Add Destination</button>
+                
+            {destinations.length === 0 ? '' :
+            <div>
+               <h2>Destinations</h2>
+                <div className='nimbus-card-container nimbus-card-container-destinations'>
+                    { destinations?.map((destination) =>  
+                        <Destination
+                            key={destination.id}
+                            destination={destination}
+                            onDeleteDestination={deleteGivenDestination}
+                            isExpanded={isExpanded}
+                        /> 
+                    )}
+                </div>
+            </div>}
+                <div className='trip-buttons'>
+                <button className='nimbus-button' onClick={() => navigate(`/my-trips`)}>Go Back</button>
+                <button className='nimbus-button' onClick={() => navigate(`/trip/${trip.id}/add-destination`)}>Add Destination</button>
+                </div>
             </div>
         </div>
-        }
+
+
         
+        }
     </div>
      
 );

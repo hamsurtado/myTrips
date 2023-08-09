@@ -7,6 +7,7 @@ type Trip @model @auth(rules:[{allow:owner}]){
   name: String!
   description: String
   owner: String
+  imageURL: String
   destinations: [Destination] @hasMany(indexName: "byTrip", fields: ["id"])
 }
 

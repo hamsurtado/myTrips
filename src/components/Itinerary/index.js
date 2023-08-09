@@ -39,6 +39,8 @@ const Itinerary = () => {
                 <img className='itinerary-header-img' src={destination?.itinerary?.header}/>
             </div>
 
+            <div className='itinerary-location-header'>{destination?.destination}</div>
+
             
             { destination?.itinerary?.content && Object.entries(destination.itinerary.content).map(([key, value]) => {
                 return <DayItinerary

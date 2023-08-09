@@ -114,16 +114,3 @@
     flex-direction: row;
     margin-top: 3em;
 }
-
-.destination-button {
-    background-color: #127082;
-    display: block;
-    color: #ffffff;
-    border: none;
-    padding: 6px 12px;
-    text-align: left;
-    text-decoration: none;
-    font-size: 0.9em;
-    cursor: pointer;
-    border-radius: 4px;
-}

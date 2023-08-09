@@ -41,6 +41,7 @@ function MyTrips() {
       })
 
       setTrips(trips.filter(trip => trip.id != tripId));
+      
     } catch (error) {
       console.error('Error creating trip:', error);
     }
@@ -51,7 +52,7 @@ function MyTrips() {
   return (
     <div>
       <h1>My Trips</h1>
-      <div className='trip-section'>
+      <div className='nimbus-card-container'>
         { trips?.map((trip) =>  
           <Trip
             key={trip.id}

@@ -31,12 +31,3 @@ form label {
   text-align: left;
 }
 
-.create-trip-button {
-  max-width: 90%;
-  width: 15%;
-  border: none;
-  color: white;
-  background-color: #127082;
-  border-radius: 5px;
-  padding: 6px;
-}

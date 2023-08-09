@@ -11,6 +11,7 @@ export const createTrip = /* GraphQL */ `
       name
       description
       owner
+      imageURL
       destinations {
         items {
           id
@@ -44,6 +45,7 @@ export const updateTrip = /* GraphQL */ `
       name
       description
       owner
+      imageURL
       destinations {
         items {
           id
@@ -77,6 +79,7 @@ export const deleteTrip = /* GraphQL */ `
       name
       description
       owner
+      imageURL
       destinations {
         items {
           id

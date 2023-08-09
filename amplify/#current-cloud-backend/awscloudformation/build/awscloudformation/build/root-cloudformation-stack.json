@@ -167,7 +167,7 @@
             ]
           },
           "S3DeploymentBucket": "amplify-mytrips-testing-192452-deployment",
-          "S3DeploymentRootKey": "amplify-appsync-files/828702ef3d988495ac3e1fc2433466d9e8529d85",
+          "S3DeploymentRootKey": "amplify-appsync-files/ae1f73fdb49c67ae5c0348fd680d75de83f025d8",
           "env": "testing"
         }
       }

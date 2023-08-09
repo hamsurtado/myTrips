@@ -83,7 +83,7 @@ function AppContent() {
             <Route path="/create-trip" element={<CreateTrip />} />
             <Route path="/" element={<Home />} />
             <Route path="/my-trips" element={<MyTrips />} />
-            <Route path="/trip/:id" element={<TripDetails />} />
+            <Route path="/trip/:id" element={<TripDetails isExpanded={isExpanded}/>} />
             <Route path="/trip/:id/add-destination" element={<AddDestination/>} />
             <Route path="/trip/:tripId/destination/:destinationId" element={<Itinerary/>} />
           </Routes>

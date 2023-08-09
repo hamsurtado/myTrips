@@ -10,18 +10,36 @@
     font-style: italic;
     color: #68a1b7;
 }
-.trip-detail-button {
-    background-color: #127082;
-    display: block;
-    color: #ffffff;
-    border: none;
-    padding: 6px 12px;
+
+
+.nimbus-card-trip-detail {
+    overflow: hidden;
+    height: 20em;
+    background-color: rgb(255 255 255 / 61%);
+    margin-bottom: 4em;
+    border: 1px solid rgb(97 109 130 / 74%);
+    border-radius: 14px;
+    color: #68a1b7;
+    transition: transform 0.3s, box-shadow 0.3s, filter 0.3s; 
+    transform: scale(1); /* default scale */
+    margin-top: -3em;
+
+    height: inherit;
+}
+
+
+.nimbus-card-trip-detail-details {
+    box-sizing: border-box;
     text-align: left;
-    text-decoration: none;
-    font-size: 0.9em;
-    /* font-weight: 500; */
-    margin: 1em 0.5em;
-    cursor: pointer;
-    border-radius: 4px;
-    /* height: auto; */
+    padding: 0.5em 1em 0.5em 2em;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.destination-card-wide {
+    width: 32em;
+}
+
+.destination-card-small {
+    width: 25em;  
 }
