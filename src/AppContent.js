@@ -23,13 +23,13 @@ import Itinerary from './components/Itinerary';
 function AppContent() {
   const { signOut } = useAuthenticator((context) => [context.user]);
   const [isExpanded, setIsExpanded] = useState(true)
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1200);
 
 
   useEffect(() => {
     // Handle window resizing
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
+      setIsMobile(window.innerWidth < 1200);
     };
 
     window.addEventListener('resize', handleResize);

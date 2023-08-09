@@ -50,7 +50,7 @@
 }
 
 .destination-attributes {
-    max-width: 75%;
+    max-width: 50%;
 }
 
 .destination-card {
@@ -63,4 +63,13 @@
     display: grid;
     grid-column: 2em;
     grid-template-columns: repeat(2, 1fr);
+}
+
+
+
+/* Media query for screens less than 60em */
+@media (max-width: 60em) {
+    .nimbus-card-container-destinations {
+        grid-template-columns: 1fr; /* Only one column */
+    }
 }
