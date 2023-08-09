@@ -35,8 +35,9 @@
   min-height: 100vh;
   height: auto;
   padding: 40px 0;
-  background-color: rgb(249, 249, 249, 0.7);
+  background-color: rgb(249, 249, 249);
   position: fixed !important;
+  z-index: 2;
 }
 
 .sign-out-button {

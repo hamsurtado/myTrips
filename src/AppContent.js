@@ -1,7 +1,7 @@
 
 import './App.css';
 import Amplify, {API} from "aws-amplify";
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { Sidebar, Menu, MenuItem } from 'react-pro-sidebar';
 import { Route, Routes, Link } from "react-router-dom";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
@@ -23,10 +23,28 @@ import Itinerary from './components/Itinerary';
 function AppContent() {
   const { signOut } = useAuthenticator((context) => [context.user]);
   const [isExpanded, setIsExpanded] = useState(true)
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+
+  useEffect(() => {
+    // Handle window resizing
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+
 
   return (
       <div className="App">
-        <Sidebar className='my-sidebar' collapsedWidth='5em' width='20em' collapsed={!isExpanded}>
+        <Sidebar className='my-sidebar' collapsedWidth='5em' width='20em' collapsed={isMobile ? true : !isExpanded}>
 
 
           <Menu className='menu' iconShape="square">
@@ -78,7 +96,7 @@ function AppContent() {
           </Menu>
         </Sidebar>
 
-        <main class={`main-component ${isExpanded ? 'main-component-small' : 'main-component-wide'}`}>
+        <main class={`main-component ${isExpanded && !isMobile ? 'main-component-small' : 'main-component-wide'}`}>
           <Routes>
             <Route path="/create-trip" element={<CreateTrip />} />
             <Route path="/" element={<Home />} />

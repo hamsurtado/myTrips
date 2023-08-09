@@ -35,11 +35,3 @@
     align-items: center;
     justify-content: space-between;
 }
-
-.destination-card-wide {
-    width: 32em;
-}
-
-.destination-card-small {
-    width: 25em;  
-}
