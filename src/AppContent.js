@@ -68,7 +68,8 @@ function AppContent() {
                 onClick={() => {
                     setIsExpanded(!isExpanded);
                 }}
-                style={{ textAlign: "center", 'font-size': '15px', 'margin-bottom': "30px" }}
+                style={{ textAlign: "center", 'font-size': '15px', 'margin-bottom': "30px", visibility: isMobile ? 'hidden' : 'visible'
+              }}
             >
                 {" "}
                 <h2>Nimbus</h2>

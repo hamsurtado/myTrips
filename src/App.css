@@ -73,10 +73,14 @@
     transition: none !important;
   }
 
+  .nimbus-card {
+    margin-bottom: 2em !important;
+  }
+
   .main-component {
     transition: none !important;
-    margin-left: 0 !important;
-    padding-right: 1em !important;
+    margin-left: 2em !important;
+    padding-right: 3em !important;
   }
 }
 
