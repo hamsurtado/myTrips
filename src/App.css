@@ -8,6 +8,22 @@
 
 
 /* Reduced font size for mobile */
+
+
+
+@media (max-width: 40em) {
+  
+  .trip-attributes, .destination-attributes {
+    font-size: 8px;
+  }
+
+  .nimbus-card-details, .nimbus-card-details {
+    margin-top: 0;
+  }
+
+
+}
+
 @media (max-width: 60em) {
   html {
       font-size: 12px; /* or whatever value makes sense for your design */
