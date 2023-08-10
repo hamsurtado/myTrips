@@ -5,7 +5,7 @@ import { API } from 'aws-amplify';
 import DayItinerary from './DayItinerary'
 import "./Itinerary.css"
 
-const Itinerary = () => {
+const Itinerary = ({isMobile}) => {
     const { tripId, destinationId } = useParams();
     const [destination, setDestination] = useState(null)
 
@@ -46,6 +46,7 @@ const Itinerary = () => {
                 return <DayItinerary
                     dayNumber={key}
                     dayItinerary={value}
+                    isMobile={isMobile}
             /> 
             }) }
         </div>

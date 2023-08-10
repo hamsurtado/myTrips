@@ -1,5 +1,5 @@
 import React, {useState, useEffect}  from 'react';
-const Itinerary = ({ dayNumber, dayItinerary }) => {
+const Itinerary = ({ dayNumber, dayItinerary, isMobile }) => {
     
     return (
         <div>
@@ -23,15 +23,31 @@ const Itinerary = ({ dayNumber, dayItinerary }) => {
             <h2> Afternoon </h2>
             <div className='activity afternoon-activity'>
 
-
-                <div className='afternoon-activity-image-container activity-image-container'>
-                    <img className='activity-image' src={dayItinerary['afternoon-img']}/>
-                </div>
+                {isMobile ? <React.Fragment> 
 
 
-                <div className='activity-description activity-description'>
-                    {dayItinerary["afternoon"]}
-                </div>
+                    <div className='activity-description activity-description'>
+                        {dayItinerary["afternoon"]}
+                    </div>
+
+                    <div className='afternoon-activity-image-container activity-image-container'>
+                        <img className='activity-image' src={dayItinerary['afternoon-img']}/>
+                    </div>
+                
+                </React.Fragment> : 
+                
+                
+                <React.Fragment>
+
+                    <div className='afternoon-activity-image-container activity-image-container'>
+                        <img className='activity-image' src={dayItinerary['afternoon-img']}/>
+                    </div>
+
+                    <div className='activity-description activity-description'>
+                        {dayItinerary["afternoon"]}
+                    </div>
+                    
+                </React.Fragment>}
             </div>
 
 

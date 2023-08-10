@@ -50,7 +50,7 @@
 }
 
 .destination-attributes {
-    max-width: 50%;
+    max-width: 40%;
 }
 
 .destination-card {
@@ -64,7 +64,6 @@
     grid-column: 2em;
     grid-template-columns: repeat(2, 1fr);
 }
-
 
 
 /* Media query for screens less than 60em */

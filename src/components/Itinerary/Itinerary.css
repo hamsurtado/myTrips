@@ -16,6 +16,7 @@
 }
 .itinerary-header-img{
     width: 100%;
+    height: -webkit-fill-available;
     margin-top: -5em;
 }
 

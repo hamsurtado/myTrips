@@ -103,7 +103,7 @@ function AppContent() {
             <Route path="/my-trips" element={<MyTrips />} />
             <Route path="/trip/:id" element={<TripDetails isExpanded={isExpanded}/>} />
             <Route path="/trip/:id/add-destination" element={<AddDestination/>} />
-            <Route path="/trip/:tripId/destination/:destinationId" element={<Itinerary/>} />
+            <Route path="/trip/:tripId/destination/:destinationId" element={<Itinerary isMobile={isMobile}/>} />
           </Routes>
         </main>
       </div>

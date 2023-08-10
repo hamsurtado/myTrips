@@ -6,6 +6,55 @@
   scroll-behavior: auto !important;
 }
 
+
+/* Reduced font size for mobile */
+@media (max-width: 60em) {
+  html {
+      font-size: 12px; /* or whatever value makes sense for your design */
+  }
+  .activity-description {
+    font-size: 12px;
+  }
+
+  .activity {
+    flex-direction: column !important;
+  }
+
+  .activity-img-container {
+    padding: 3em
+  }
+
+  .activity-description {
+    width: inherit !important;
+    padding: 2em 0.5em !important;
+  }
+
+  .activity-image {
+    max-width: 25em;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .afternoon-activity-image-container {
+    margin: 0 !important;
+  }
+
+  .css-ewdv3l {
+    margin-left: -0.5em !important;
+    transition: none;
+  }
+
+  .my-sidebar { 
+    transition: none !important;
+  }
+
+  .main-component {
+    transition: none !important;
+  }
+}
+
+
+
 .nimbus-button{
   background-color: #127082;
   color: #ffffff;
@@ -38,6 +87,7 @@
   background-color: rgb(249, 249, 249);
   position: fixed !important;
   z-index: 2;
+  min-height: 100vh;
 }
 
 .sign-out-button {
@@ -88,7 +138,7 @@
 }
 
 .main-component-wide {
-  min-width: 40em;
+  min-width: 25em;
   margin-left: 5em;
 
 }
@@ -112,7 +162,7 @@
 h1 {
   text-align: left;
   display: block;
-  font-size: 30px;
+  font-size: 2em;
   font-weight: 600;
   color: #68a1b8;
   margin-bottom: 1.5em;
@@ -121,7 +171,7 @@ h1 {
 h2 {
   text-align: left;
   display: block;
-  font-size: 20px;
+  font-size: 1.5em;
   font-weight: 600;
   color: #68a1b8;
   margin: 1.5em 0em;
