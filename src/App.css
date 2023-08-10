@@ -17,8 +17,12 @@
     font-size: 8px;
   }
 
-  .nimbus-card-details, .nimbus-card-details {
+  .destination-card .nimbus-card-details {
     margin-top: 0;
+  }
+
+  .nimbus-card-details, .nimbus-card-details {
+    margin-top: 1em;
   }
 
 

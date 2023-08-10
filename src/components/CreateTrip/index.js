@@ -75,7 +75,7 @@ function CreateTrip() {
               name='description'
               onChange={handleChange}
             />
-        <button className='nimbus-button' style={{width: 7 + 'em'}} type='submit'>Create Trip</button>
+        <button className='nimbus-button' style={{width: 8 + 'em'}} type='submit'>Create Trip</button>
       </form>
     </div>
   );
