@@ -26,6 +26,11 @@
   }
 
 
+  .nimbus-button {
+    padding: 1em !important;
+    font-size: 6px !important;
+  }
+
 }
 
 @media (max-width: 60em) {
@@ -70,6 +75,8 @@
 
   .main-component {
     transition: none !important;
+    margin-left: 0 !important;
+    padding-right: 1em !important;
   }
 }
 
