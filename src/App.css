@@ -75,6 +75,7 @@
 
   .nimbus-card {
     margin-bottom: 2em !important;
+    height: 17em !important;
   }
 
   .main-component {
@@ -236,4 +237,12 @@ h2 {
   to {
     transform: rotate(360deg);
   }
+}
+
+.home-destination-container .destination-card {
+  filter: none !important;
+}
+
+.home-destination-container .destination-buttons {
+  visibility: hidden;
 }

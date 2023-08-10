@@ -19,7 +19,7 @@ function MyTrips() {
           variables: {},
           authMode: "AMAZON_COGNITO_USER_POOLS"
         });
-        setTrips(trips.data.listTrips.items                                                                     )
+        setTrips(trips.data.listTrips.items)
       } catch (error) {
         console.error('Error creating trip:', error);
       }
