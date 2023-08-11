@@ -16,7 +16,8 @@ async function retrieveImage(query, size = "Large") {
     }
 
     const data = await response.json();
-    return data.value[0].contentUrl;
+    const randomIndex = Math.floor(Math.random() * data.value.length);
+    return data.value[randomIndex].contentUrl;
 
   } catch (error) {
     console.error("Error fetching image", error.message);

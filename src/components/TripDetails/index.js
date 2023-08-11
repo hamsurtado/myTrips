@@ -4,7 +4,9 @@ import { API } from 'aws-amplify';
 import { getTrip, listDestinations } from '../../graphql/queries';
 import Destination from './Destination';
 import "./TripDetails.css"
-import { deleteDestination } from '../../graphql/mutations';
+import { deleteDestination, updateTrip } from '../../graphql/mutations';
+import retrieveImage from '../../utils/retrieveImage';
+
 
 function TripDetails({ isExpanded }) {
     const { id } = useParams();
@@ -12,28 +14,53 @@ function TripDetails({ isExpanded }) {
     const navigate = useNavigate();
     const [destinations, setDestinations] = useState([])
 
-    useEffect(() => {
-        const fetchTrip = async() => {
-            try {
-                const response = await API.graphql({
-                    query: getTrip,
+    const regenerateImage = async() => {
+        try {
+            const newImage = await retrieveImage(trip.name);
+            await API.graphql({
+                query: updateTrip,
+                variables: {
+                    input: {
+                    id: id,
+                    imageURL: newImage
+                  }
+                },
+                authMode: "AMAZON_COGNITO_USER_POOLS"
+            });
+            fetchTripDetails();
+            
+        } catch(error) {
+            console.error('error retrieving image', error)
+
+        }
+    }
+
+    const fetchTripDetails = async() => {
+        try{
+            const response = await API.graphql({
+                query: getTrip,
                     variables: { id },
                     authMode: "AMAZON_COGNITO_USER_POOLS"
                 });
-                setTrip(response.data.getTrip)
+                setTrip(response.data.getTrip);
                 const destinationResponse = await API.graphql({
                     query: listDestinations,    
                     variables: { filter: {tripId: {eq: id}} },
                     authMode: "AMAZON_COGNITO_USER_POOLS"
                 });
-                setDestinations(destinationResponse.data.listDestinations.items)
+                setDestinations(destinationResponse.data.listDestinations.items);
 
-            } catch(error) {
-                console.error('Error getting trip:', error);
+            } catch (error) {
+                console.error('Error getting trip details:', error);
             }
-    };
-    fetchTrip();
-    }, [])
+        }
+    
+    
+
+    useEffect(() => {
+
+        fetchTripDetails();
+        }, [id])
 
     const deleteGivenDestination = async(destinationId) => {
         try {
@@ -51,6 +78,8 @@ function TripDetails({ isExpanded }) {
         } catch (error) {
           console.error('Error deleting destination:', error);
         }
+
+   
     
       };
     
@@ -62,6 +91,9 @@ return(
         
         <div className='nimbus-card-trip-detail'>
             <div className='nimbus-card-img-container'  style={{ backgroundImage: `url(${trip.imageURL})` }}/>
+            <button className='nimbus-button regenerate-button' onClick={regenerateImage}>Regenerate Image</button>
+            
+
 
 
 

@@ -35,3 +35,7 @@
     align-items: center;
     justify-content: space-between;
 }
+
+.regenerate-button{
+    text-align: right;
+}
