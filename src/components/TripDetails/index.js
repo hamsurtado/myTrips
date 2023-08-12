@@ -6,6 +6,9 @@ import Destination from './Destination';
 import "./TripDetails.css"
 import { deleteDestination, updateTrip } from '../../graphql/mutations';
 import retrieveImage from '../../utils/retrieveImage';
+import IconButton from '@mui/material/IconButton';
+import EditIcon from '@mui/icons-material/Edit';
+import TextField from '@mui/material/TextField';
 
 
 function TripDetails({ isExpanded }) {
@@ -13,6 +16,9 @@ function TripDetails({ isExpanded }) {
     const [trip, setTrip] = useState(null)
     const navigate = useNavigate();
     const [destinations, setDestinations] = useState([])
+    const [isEditingName, setIsEditingName] = useState(false);
+    const [isEditingDescription, setIsEditingDescription] = useState(false);
+   
 
     const regenerateImage = async() => {
         try {
@@ -27,13 +33,18 @@ function TripDetails({ isExpanded }) {
                 },
                 authMode: "AMAZON_COGNITO_USER_POOLS"
             });
-            fetchTripDetails();
+
+            setTrip({
+                ...trip,
+                imageURL: newImage
+            });
             
         } catch(error) {
             console.error('error retrieving image', error)
 
         }
     }
+
 
     const fetchTripDetails = async() => {
         try{
@@ -54,6 +65,20 @@ function TripDetails({ isExpanded }) {
                 console.error('Error getting trip details:', error);
             }
         }
+
+    const updateTripDetails = async(updatedTrip) => {
+        try {
+            await API.graphql({
+                query: updateTrip,
+                variables: {
+                    input: updatedTrip
+                },
+                authMode: "AMAZON_COGNITO_USER_POOLS"
+            });
+        } catch (error) {
+            console.error('Error updating trip details:', error);
+        }
+    }
     
     
 
@@ -91,7 +116,11 @@ return(
         
         <div className='nimbus-card-trip-detail'>
             <div className='nimbus-card-img-container'  style={{ backgroundImage: `url(${trip.imageURL})` }}/>
-            <button className='nimbus-button regenerate-button' onClick={regenerateImage}>Regenerate Image</button>
+            <div className='edit-button'>
+                <IconButton className='edit-button image-regenerate-button' onClick={regenerateImage}>
+                    <EditIcon />
+                </IconButton>
+            </div>
             
 
 
@@ -99,12 +128,51 @@ return(
 
             <div className='nimbus-card-trip-detail-details'>
             
-
-            <h1> Trip - {trip.name} </h1>
-            <div className='trip-detail-description'> "{trip.description}"</div>
-
-            
+            <div className='trip-name-container'>
+                {isEditingName ? (
+                    <TextField
+                        value={trip.name}
+                        onChange={(e) => setTrip(trip => ({ ...trip, name: e.target.value }))}
+                        onBlur={() => {
+                            setIsEditingName(false);
+                            updateTripDetails(trip);
+                        }}
+                        autoFocus
+                    />
+                ) : (
+                <div className='trip-name-container'> 
+                <h1> Your {trip.name} Trip!</h1>
+                <IconButton className='edit-button' onClick={() => setIsEditingName(true)}>
+                    <EditIcon />
+                </IconButton>
+                </div>
+                )} 
                 
+            </div>
+
+            <div className='trip-description-container'>
+            {isEditingDescription ? (
+                    <TextField
+                        value={trip.description}
+                        onChange={(e) => setTrip(trip => ({ ...trip, description: e.target.value }))}
+                        onBlur={() => {
+                            setIsEditingDescription(false);
+                            updateTripDetails(trip);
+                        }}
+                        autoFocus
+                    />
+                ) : (
+                    <div className='trip-description-container'>
+                        <div className='trip-detail-description'> "{trip.description}"</div>
+                        <IconButton className='edit-button trip-description-edit-button' onClick={() => setIsEditingDescription(true)}>
+                            <EditIcon />
+                        </IconButton>
+                    </div>
+                )}
+            </div>
+                
+               
+
             {destinations.length === 0 ? '' :
             <div>
                <h2>Destinations</h2>

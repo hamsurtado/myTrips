@@ -126,16 +126,16 @@ function AddDestination() {
               <div className='date-range-container'>
                 <h2>When are you going?</h2>
                 <DateRangePicker
-                    startDate={startDate} // momentPropTypes.momentObj or null,
-                    startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
-                    endDate={endDate} // momentPropTypes.momentObj or null,
-                    endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
+                    startDate={startDate}
+                    startDateId="your_unique_start_date_id" 
+                    endDate={endDate} 
+                    endDateId="your_unique_end_date_id"
                     onDatesChange={({ startDate, endDate }) => {
                         setStartDate(startDate);
                         setEndDate(endDate);
-                    }} // PropTypes.func.isRequired,
-                    focusedInput={focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
-                    onFocusChange={focusedInput => setFocusedInput(focusedInput)} // PropTypes.func.isRequired,
+                    }} 
+                    focusedInput={focusedInput} 
+                    onFocusChange={focusedInput => setFocusedInput(focusedInput)} 
                 />
                 <div className='add-destination-buttons'>
                   <button className='nimbus-button' onClick={() => navigate(`/trip/${id}`)}>Go Back </button>                  

@@ -36,6 +36,22 @@
     justify-content: space-between;
 }
 
-.regenerate-button{
-    text-align: right;
+.edit-button {
+    float: right;
+}
+
+trip-description-edit-button{
+    height: .2 em;
+    width: .1 em;
+}
+
+.trip-name-container{
+    display: flex;
+    flex-direction: row;
+
+}
+
+.trip-description-container{
+    display: flex;
+    flex-direction: row;
 }
