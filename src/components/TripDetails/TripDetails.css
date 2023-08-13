@@ -55,3 +55,35 @@ trip-description-edit-button{
     display: flex;
     flex-direction: row;
 }
+
+.image-regenerate-button {
+    border-radius: 0 !important;
+    font-size: 0.8em !important;
+}
+
+.edit-title-textfield {
+    font-size: 2em !important;
+    font-weight: 600 !important;
+    color: #68a1b8 !important;
+    margin-top: 0.2em;
+    margin-left: -0.4em;
+    margin-bottom: 0.4em;
+
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif !important;
+}
+
+.edit-description-textfield {
+
+    margin-top: -0.7em;
+    margin-left: -0.3em;
+    text-align: left;
+    width: 30em !important;
+
+    max-width: 75% !important;
+    font-size: 1.2em !important;
+    font-style: italic !important;
+    color: #68a1b7 !important;
+    
+}

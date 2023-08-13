@@ -8,6 +8,7 @@ import { deleteDestination, updateTrip } from '../../graphql/mutations';
 import retrieveImage from '../../utils/retrieveImage';
 import IconButton from '@mui/material/IconButton';
 import EditIcon from '@mui/icons-material/Edit';
+import RefreshIcon from '@mui/icons-material/RefreshRounded';
 import TextField from '@mui/material/TextField';
 
 
@@ -123,7 +124,8 @@ return(
             <div className='nimbus-card-img-container'  style={{ backgroundImage: `url(${trip.imageURL})` }}/>
             <div className='edit-button'>
                 <IconButton className='edit-button image-regenerate-button' onClick={regenerateImage}>
-                    <EditIcon />
+                    Refresh Trip Image &nbsp;
+                    <RefreshIcon />
                 </IconButton>
             </div>
             
@@ -142,11 +144,14 @@ return(
                             setIsEditingName(false);
                             updateTripDetails(trip);
                         }}
+                        InputProps={{
+                            className: "edit-title-textfield",
+                        }}
                         autoFocus
                     />
                 ) : (
                 <div className='trip-name-container'> 
-                <h1> Your {trip.name} Trip!</h1>
+                <h1> {trip.name} </h1>
                 <IconButton className='edit-button' onClick={() => setIsEditingName(true)}>
                     <EditIcon />
                 </IconButton>
@@ -165,6 +170,10 @@ return(
                             updateTripDetails(trip);
                         }}
                         autoFocus
+
+                        InputProps={{
+                            className: "edit-description-textfield",
+                        }}
                     />
                 ) : (
                     <div className='trip-description-container'>
