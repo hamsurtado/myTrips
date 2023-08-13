@@ -68,13 +68,18 @@ function TripDetails({ isExpanded }) {
 
     const updateTripDetails = async(updatedTrip) => {
         try {
-            await API.graphql({
+            let response = await API.graphql({
                 query: updateTrip,
                 variables: {
-                    input: updatedTrip
+                    input: {
+                        id: updatedTrip.id,
+                        name: updatedTrip.name,
+                        description: updatedTrip.description,
+                    }
                 },
                 authMode: "AMAZON_COGNITO_USER_POOLS"
             });
+
         } catch (error) {
             console.error('Error updating trip details:', error);
         }
