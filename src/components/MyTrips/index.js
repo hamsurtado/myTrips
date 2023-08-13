@@ -29,22 +29,28 @@ function MyTrips() {
   }, []);
 
   const deleteGivenTrip = async(tripId) => {
-    try {
-      await API.graphql({ 
-        query: mutations.deleteTrip, 
-        variables: { 
-          input: {
-            id: tripId
-          }
-        },
-        authMode: "AMAZON_COGNITO_USER_POOLS"
-      })
-
-      setTrips(trips.filter(trip => trip.id != tripId));
-      
-    } catch (error) {
-      console.error('Error creating trip:', error);
-    }
+    const choice = window.confirm(
+      "Are you sure you want to delete this trip?"
+    )
+    if (choice) {
+      try {
+        await API.graphql({ 
+          query: mutations.deleteTrip, 
+          variables: { 
+            input: {
+              id: tripId
+            }
+          },
+          authMode: "AMAZON_COGNITO_USER_POOLS"
+        })
+  
+        setTrips(trips.filter(trip => trip.id != tripId));
+        
+      } catch (error) {
+        console.error('Error creating trip:', error);
+      }
+  }
+    
 
   };
 

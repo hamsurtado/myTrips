@@ -94,23 +94,26 @@ function TripDetails({ isExpanded }) {
         }, [id])
 
     const deleteGivenDestination = async(destinationId) => {
-        try {
-          await API.graphql({ 
-            query: deleteDestination, 
-            variables: { 
-              input: {
-                id: destinationId
+        const choice = window.confirm(
+            "Are you sure you want to delete destination?"
+          )
+          if (choice) {
+            try {
+                await API.graphql({ 
+                  query: deleteDestination, 
+                  variables: { 
+                    input: {
+                      id: destinationId
+                    }
+                  },
+                  authMode: "AMAZON_COGNITO_USER_POOLS"
+                })
+          
+                setDestinations(destinations.filter(destination => destination.id !== destinationId));
+              } catch (error) {
+                console.error('Error deleting destination:', error);
               }
-            },
-            authMode: "AMAZON_COGNITO_USER_POOLS"
-          })
-    
-          setDestinations(destinations.filter(destination => destination.id !== destinationId));
-        } catch (error) {
-          console.error('Error deleting destination:', error);
-        }
-
-   
+          }
     
       };
     
