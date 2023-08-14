@@ -29,22 +29,6 @@ function AppContent() {
     
   useEffect(() => {
       window.scrollTo(0, 0);
-
-      const resetZoom = () => {
-          const viewport = document.querySelector("meta[name=viewport]");
-          
-          if (viewport) {
-              // Disable user scaling temporarily
-              viewport.content = "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no";
-
-              // Allow the browser some time to apply the previous settings
-              setTimeout(() => {
-                  viewport.content = "width=device-width, initial-scale=1";  // Reset to normal settings
-              }, 300);
-          }
-      };
-
-      resetZoom();
   }, [location]);
   
   useEffect(() => {

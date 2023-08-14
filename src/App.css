@@ -22,13 +22,13 @@
   }
 
   .nimbus-card-details, .nimbus-card-details {
-    margin-top: 1em;
+    margin-top: 0.3em;
   }
 
 
   .nimbus-button {
-    padding: 1em !important;
-    font-size: 6px !important;
+    padding: 0.5em 0.8em !important;
+    font-size: 10px !important;
   }
 
 }
@@ -92,7 +92,13 @@
   .trip-name {
     margin-top: 0 !important;
   }
-
+  
+  select,
+  textarea,
+  label,
+  input {
+    font-size: 16px !important;
+  }
 }
 
 
