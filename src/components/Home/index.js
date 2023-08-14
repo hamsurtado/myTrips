@@ -46,18 +46,21 @@ function Home() {
             }
           });
 
-          const getTripResponse = await API.graphql({
-            query: getTrip,
-                variables: { id: upcomingDestinations[0].tripId},
-                authMode: "AMAZON_COGNITO_USER_POOLS"
-            });
-          
-          setTrip(getTripResponse.data.getTrip)
-          setUpcomingDestinations(upcomingDestinations)
+          if (upcomingDestinations.length > 0) {
+            const getTripResponse = await API.graphql({
+              query: getTrip,
+                  variables: { id: upcomingDestinations[0].tripId},
+                  authMode: "AMAZON_COGNITO_USER_POOLS"
+              });
+            
+            setTrip(getTripResponse.data.getTrip)
+            setUpcomingDestinations(upcomingDestinations)
+          }
           setHasLoaded(true)
           
         } catch (error) {
           console.error('Error creating trip:', error);
+          setHasLoaded(true)
         }
       }
       getDestinations();
@@ -70,18 +73,19 @@ function Home() {
       {
        upcomingDestinations.length > 0 ?
       <div className='home-destination-container'>
-      <h2>Your Next Trip is Coming Up Soon 💙 !</h2>
-      <Trip
-            key={trip.id}
-            trip={trip}
-            onDeleteTrip={() => {}}
-          /></div> : 
+        <h2>Your Next Trip is Coming Up Soon 💙 !</h2>
+        <Trip
+              key={trip.id}
+              trip={trip}
+              onDeleteTrip={() => {}}
+        />
+      </div> : 
       <div>
-      <h2> You don't have any upcoming trips planned 🥲</h2>
-      <h2>Plan a trip!</h2>
-      <button className='nimbus-button' onClick={() => navigate(`/create-trip`)}>Create Trip</button>
+        <h2> You don't have any upcoming trips planned 🥲</h2>
+        <h2>Plan a trip!</h2>
+        <button className='nimbus-button' onClick={() => navigate(`/create-trip`)}>Create Trip</button>
       </div>
-      }</div> :
+      } </div> :
       " "
     }
       
