@@ -38,6 +38,9 @@
     "categories": {
       "function": {
         "dynamodbtrips": {}
+      },
+      "auth": {
+        "mytrips44010338": {}
       }
     }
   },

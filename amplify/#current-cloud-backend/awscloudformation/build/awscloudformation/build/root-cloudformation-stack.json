@@ -1,5 +1,5 @@
 {
-  "Description": "Root Stack for AWS Amplify CLI",
+  "Description": "Root Stack for AWS Amplify Console",
   "AWSTemplateFormatVersion": "2010-09-09",
   "Parameters": {
     "DeploymentBucketName": {
@@ -195,8 +195,8 @@
           "aliasAttributes": "",
           "userpoolClientGenerateSecret": false,
           "userpoolClientRefreshTokenValidity": 30,
-          "userpoolClientWriteAttributes": "email",
-          "userpoolClientReadAttributes": "email",
+          "userpoolClientWriteAttributes": "",
+          "userpoolClientReadAttributes": "",
           "userpoolClientLambdaRole": "mytrip44010338_userpoolclient_lambda_role",
           "userpoolClientSetAttributes": false,
           "sharedId": "44010338",
@@ -222,21 +222,21 @@
           },
           "breakCircularDependency": true,
           "dependsOn": "",
-          "thirdPartyAuth": true,
+          "thirdPartyAuth": false,
           "authProviders": "",
           "userPoolGroups": false,
           "adminQueries": false,
           "triggers": "{}",
           "hostedUI": true,
           "hostedUIDomainName": "mytripsce01cd9d-ce01cd9d",
-          "authProvidersUserPool": "",
-          "hostedUIProviderMeta": "[]",
-          "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://main.d2cqnti5knqdgi.amplifyapp.com/\"],\"LogoutURLs\":[\"https://main.d2cqnti5knqdgi.amplifyapp.com/\"]}",
+          "authProvidersUserPool": "Google,LoginWithAmazon",
+          "hostedUIProviderMeta": "[{\"ProviderName\":\"Google\",\"authorize_scopes\":\"openid email profile\",\"AttributeMapping\":{\"email\":\"email\",\"username\":\"sub\"}},{\"ProviderName\":\"LoginWithAmazon\",\"authorize_scopes\":\"profile profile:user_id\",\"AttributeMapping\":{\"email\":\"email\",\"username\":\"user_id\"}}]",
+          "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://mynimbusapp.com/\",\"http://localhost:3000/\"],\"LogoutURLs\":[\"https://mynimbusapp.com/\",\"http://localhost:3000/\"]}",
           "parentStack": {
             "Ref": "AWS::StackId"
           },
           "permissions": "",
-          "hostedUIProviderCreds": "[]",
+          "hostedUIProviderCreds": "[{\"ProviderName\":\"Google\",\"client_id\":\"298399363376-pnfr5ug9qcvbco00ap5lll3l9gbr78vl.apps.googleusercontent.com\",\"client_secret\":\"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\"},{\"ProviderName\":\"LoginWithAmazon\",\"client_id\":\"amzn1.application-oa2-client.97b91e431c6a4644a2efae7ae4806f36\",\"client_secret\":\"amzn1.oa2-cs.v1.cfed03be510939e5e1896aa9bc06ce4aa2259971705bd723bdef644022ff282f\"}]",
           "env": "testing"
         }
       }

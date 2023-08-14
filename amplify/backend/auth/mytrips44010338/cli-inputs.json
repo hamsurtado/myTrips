@@ -25,12 +25,8 @@
     "aliasAttributes": [],
     "userpoolClientGenerateSecret": false,
     "userpoolClientRefreshTokenValidity": 30,
-    "userpoolClientWriteAttributes": [
-      "email"
-    ],
-    "userpoolClientReadAttributes": [
-      "email"
-    ],
+    "userpoolClientWriteAttributes": [],
+    "userpoolClientReadAttributes": [],
     "userpoolClientLambdaRole": "mytrip44010338_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
     "sharedId": "44010338",
@@ -58,16 +54,19 @@
     },
     "breakCircularDependency": true,
     "dependsOn": [],
-    "thirdPartyAuth": true,
+    "thirdPartyAuth": false,
     "authProviders": [],
     "userPoolGroups": false,
     "adminQueries": false,
     "triggers": {},
     "hostedUI": true,
     "hostedUIDomainName": "mytripsce01cd9d-ce01cd9d",
-    "authProvidersUserPool": [],
-    "hostedUIProviderMeta": "[]",
-    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://main.d2cqnti5knqdgi.amplifyapp.com/\"],\"LogoutURLs\":[\"https://main.d2cqnti5knqdgi.amplifyapp.com/\"]}",
+    "authProvidersUserPool": [
+      "Google",
+      "LoginWithAmazon"
+    ],
+    "hostedUIProviderMeta": "[{\"ProviderName\":\"Google\",\"authorize_scopes\":\"openid email profile\",\"AttributeMapping\":{\"email\":\"email\",\"username\":\"sub\"}},{\"ProviderName\":\"LoginWithAmazon\",\"authorize_scopes\":\"profile profile:user_id\",\"AttributeMapping\":{\"email\":\"email\",\"username\":\"user_id\"}}]",
+    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://mynimbusapp.com/\",\"http://localhost:3000/\"],\"LogoutURLs\":[\"https://mynimbusapp.com/\",\"http://localhost:3000/\"]}",
     "parentStack": {
       "Ref": "AWS::StackId"
     },

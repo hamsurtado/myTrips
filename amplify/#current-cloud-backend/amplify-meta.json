@@ -46,12 +46,11 @@
       },
       "providerPlugin": "awscloudformation",
       "service": "AppSync",
-      "lastPushTimeStamp": "2023-08-13T04:14:35.317Z",
+      "lastPushTimeStamp": "2023-08-14T23:36:29.258Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-mytrips-testing-192452-deployment/amplify-cfn-templates/api/cloudformation-template.json",
         "logicalId": "apimytrips"
-      },
-      "lastPushDirHash": "/ca7JUCTBc/Nz4F6iRm1C8N/QJ8="
+      }
     }
   },
   "auth": {
@@ -64,13 +63,16 @@
           "SMS"
         ],
         "passwordProtectionSettings": {
-          "passwordPolicyCharacters": [],
-          "passwordPolicyMinLength": 8
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
         },
         "signupAttributes": [
           "EMAIL"
         ],
-        "socialProviders": [],
+        "socialProviders": [
+          "GOOGLE",
+          "AMAZON"
+        ],
         "usernameAttributes": [
           "EMAIL"
         ],
@@ -88,15 +90,15 @@
         "IdentityPoolId": "us-west-2:152d02ed-f59b-47f3-846d-12f3f6968eeb",
         "UserPoolArn": "arn:aws:cognito-idp:us-west-2:010060798741:userpool/us-west-2_zIBFX2X1U",
         "IdentityPoolName": "mytrips44010338_identitypool_44010338__testing",
-        "OAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://main.d2cqnti5knqdgi.amplifyapp.com/\"],\"LogoutURLs\":[\"https://main.d2cqnti5knqdgi.amplifyapp.com/\"]}",
+        "OAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://mynimbusapp.com/\",\"http://localhost:3000/\"],\"LogoutURLs\":[\"https://mynimbusapp.com/\",\"http://localhost:3000/\"]}",
         "UserPoolName": "mytrips44010338_userpool_44010338"
       },
-      "lastPushTimeStamp": "2023-08-13T04:14:35.317Z",
+      "lastPushTimeStamp": "2023-08-14T23:36:29.385Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-mytrips-testing-192452-deployment/amplify-cfn-templates/auth/mytrips44010338-cloudformation-template.json",
         "logicalId": "authmytrips44010338"
       },
-      "lastPushDirHash": "uvuU3ti8f8rtDzGUZlNizXTdxK4="
+      "lastPushDirHash": "Y8FBzf4GX7k7lZUEZlUgMd5Jza8="
     }
   },
   "function": {},

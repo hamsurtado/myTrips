@@ -20,15 +20,18 @@ const awsmobile = {
             "profile",
             "aws.cognito.signin.user.admin"
         ],
-        "redirectSignIn": "https://main.d2cqnti5knqdgi.amplifyapp.com/",
-        "redirectSignOut": "https://main.d2cqnti5knqdgi.amplifyapp.com/",
+        "redirectSignIn": "https://mynimbusapp.com/,http://localhost:3000/",
+        "redirectSignOut": "https://mynimbusapp.com/,http://localhost:3000/",
         "responseType": "code"
     },
     "federationTarget": "COGNITO_USER_POOLS",
     "aws_cognito_username_attributes": [
         "EMAIL"
     ],
-    "aws_cognito_social_providers": [],
+    "aws_cognito_social_providers": [
+        "GOOGLE",
+        "AMAZON"
+    ],
     "aws_cognito_signup_attributes": [
         "EMAIL"
     ],

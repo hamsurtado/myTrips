@@ -34,22 +34,26 @@ const Itinerary = ({isMobile}) => {
 
     
     return (
-        <div className='itinerary-container'>
-            <div className='itinerary-header-img-container'>
-                <img className='itinerary-header-img' src={destination?.itinerary?.header}/>
+
+        <div className='nimbus-card-trip-detail'>
+
+            <div className='nimbus-card-img-container'>
+                <div className='nimbus-card-img' style={{ backgroundImage: `url(${destination?.itinerary?.header})` }}/>
             </div>
 
+            <div className='nimbus-card-trip-detail-details'>
             <div className='itinerary-location-header'>{destination?.destination}</div>
-
             
-            { destination?.itinerary?.content && Object.entries(destination.itinerary.content).map(([key, value]) => {
-                return <DayItinerary
-                    dayNumber={key}
-                    dayItinerary={value}
-                    isMobile={isMobile}
-            /> 
-            }) }
+                { destination?.itinerary?.content && Object.entries(destination.itinerary.content).map(([key, value]) => {
+                    return <DayItinerary
+                        dayNumber={key}
+                        dayItinerary={value}
+                        isMobile={isMobile}
+                /> 
+                }) }
+            </div>
         </div>
+
     )
 }
 

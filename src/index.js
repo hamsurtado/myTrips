@@ -8,7 +8,22 @@ import awsExports from "./aws-exports";
 import { BrowserRouter } from "react-router-dom";
 import { Authenticator } from '@aws-amplify/ui-react';
 
-Amplify.configure(awsExports);
+const isDevelopment = process.env.REACT_APP_ENV === 'development';
+
+const config = {
+  ...awsExports,
+  oauth: {
+      ...awsExports.oauth,
+      redirectSignIn: isDevelopment 
+        ? 'http://localhost:3000/'
+        : 'https://mynimbusapp.com/',
+      redirectSignOut: isDevelopment 
+        ? 'http://localhost:3000/'
+        : 'https://mynimbusapp.com/',
+  }
+};
+
+Amplify.configure(config);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

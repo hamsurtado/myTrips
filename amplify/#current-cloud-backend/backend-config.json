@@ -48,7 +48,10 @@
         "signupAttributes": [
           "EMAIL"
         ],
-        "socialProviders": [],
+        "socialProviders": [
+          "GOOGLE",
+          "AMAZON"
+        ],
         "usernameAttributes": [
           "EMAIL"
         ],

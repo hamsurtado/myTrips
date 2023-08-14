@@ -17,8 +17,13 @@ function Home() {
 
   useEffect(() => {
     Auth.currentAuthenticatedUser()
-      .then(user => setUser(user))
+      .then(user => {debugger;setUser(user)})
       .catch(err => console.log(err));
+
+      Auth.currentSession()
+      .then(data => {
+        debugger;
+        let idToken = data.getIdToken()});
 
       const getDestinations = async() => {
         try {
@@ -68,7 +73,7 @@ function Home() {
 
   return (
     <div>
-      <h1>Welcome, {user && user.attributes.given_name}!</h1>
+      <h1>Welcome, {user && user.attributes.given_name.split(" ")[0]}!</h1>
       {hasLoaded ? <div>
       {
        upcomingDestinations.length > 0 ?
