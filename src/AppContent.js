@@ -18,14 +18,35 @@ import AddDestination from "./components/TripDetails/AddDestination";
 import "@aws-amplify/ui-react/styles.css";
 import { useAuthenticator, Button } from '@aws-amplify/ui-react';
 import Itinerary from './components/Itinerary';
+import { useLocation } from 'react-router-dom';
 
 
 function AppContent() {
   const { signOut } = useAuthenticator((context) => [context.user]);
   const [isExpanded, setIsExpanded] = useState(true)
   const [isMobile, setIsMobile] = useState(window.innerWidth < 1200);
+  const location = useLocation();
+    
+  useEffect(() => {
+      window.scrollTo(0, 0);
 
+      const resetZoom = () => {
+          const viewport = document.querySelector("meta[name=viewport]");
+          
+          if (viewport) {
+              // Disable user scaling temporarily
+              viewport.content = "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no";
 
+              // Allow the browser some time to apply the previous settings
+              setTimeout(() => {
+                  viewport.content = "width=device-width, initial-scale=1";  // Reset to normal settings
+              }, 300);
+          }
+      };
+
+      resetZoom();
+  }, [location]);
+  
   useEffect(() => {
     // Handle window resizing
     const handleResize = () => {
@@ -40,6 +61,7 @@ function AppContent() {
     };
   }, []);
 
+  
 
 
   return (
