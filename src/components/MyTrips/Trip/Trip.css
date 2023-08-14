@@ -36,11 +36,17 @@
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
   }
 
-.nimbus-card-img-container {
-    height: 12em;
+.nimbus-card-img {
     background-size: cover;
     background-position: center;
+    height: 12em;
     z-index: 5;
+}
+
+.nimbus-card-img-container {
+    overflow: hidden;
+    height: 12em;
+    border-radius: 14px 14px 0 0;
 }
 
 .nimbus-card-details {

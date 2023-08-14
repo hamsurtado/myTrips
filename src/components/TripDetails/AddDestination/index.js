@@ -9,6 +9,9 @@ import { Configuration, OpenAIApi } from "openai";
 import { createDestination } from '../../../graphql/mutations';
 import { API } from 'aws-amplify';
 import retrieveImage from '../../../utils/retrieveImage';
+import IconButton from '@mui/material/IconButton';
+import RefreshIcon from '@mui/icons-material/RefreshRounded';
+import { getTrip } from '../../../graphql/queries';
 
 
 function AddDestination() {
@@ -16,12 +19,33 @@ function AddDestination() {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [destination, setDestination] = useState(null);
+  const [trip, setTrip] = useState(null);
 
   const isDisabled = !destination || !startDate || !endDate;
 
   const [focusedInput, setFocusedInput] = useState(null);
   const navigate = useNavigate();
   const {id} = useParams()
+
+
+  useEffect(() => {
+
+      const fetchTrip = async() => {
+        try {
+          const getTripResponse = await API.graphql({
+            query: getTrip,
+                variables: { id },
+                authMode: "AMAZON_COGNITO_USER_POOLS"
+            });
+          
+          setTrip(getTripResponse.data.getTrip)
+          
+        } catch (error) {
+          console.error('Error creating trip:', error);
+        }
+      }
+      fetchTrip();
+  }, []);
 
 
   const generateItinerary = async () => {
@@ -109,50 +133,67 @@ function AddDestination() {
 
 
   return (
-    !isLoading 
-    ? (
-      <div>
-            <h1>Add Destination</h1>
-            <div className='trip-info-container'>
-              <div className='search-bar-container'>
-                <h2>Where do you want to go?</h2>
-                <SearchDestination
-                  onDestinationChange={(destination) => {
-                    setDestination(destination);
-                  }}
-                />
-              </div>
-              
-              <div className='date-range-container'>
-                <h2>When are you going?</h2>
-                <DateRangePicker
-                    startDate={startDate}
-                    startDateId="your_unique_start_date_id" 
-                    endDate={endDate} 
-                    endDateId="your_unique_end_date_id"
-                    onDatesChange={({ startDate, endDate }) => {
-                        setStartDate(startDate);
-                        setEndDate(endDate);
-                    }} 
-                    focusedInput={focusedInput} 
-                    onFocusChange={focusedInput => setFocusedInput(focusedInput)} 
-                />
-                <div className='add-destination-buttons'>
-                  <button className='nimbus-button' onClick={() => navigate(`/trip/${id}`)}>Go Back </button>                  
-                  <button className='nimbus-button' disabled={isDisabled}  onClick={() => generateItinerary()}>Generate Itinerary </button>
+
+    
+
+    trip !== null ?
+    
+    <div className='nimbus-card-trip-detail'>
+      <div className='nimbus-card-img-container'>
+        <div className='nimbus-card-img' style={{ backgroundImage: `url(${trip?.imageURL})` }}/>
+      </div>
+
+      <div className='nimbus-card-trip-detail-details'>
+        
+        {
+            !isLoading 
+            ? (
+              <div>
+                    <h1>Add Destination to {trip?.name}</h1>
+                    <div className='trip-info-container'>
+                      <div className='search-bar-container'>
+                        <h2>Where do you want to go?</h2>
+                        <SearchDestination
+                          onDestinationChange={(destination) => {
+                            setDestination(destination);
+                          }}
+                        />
+                      </div>
+                      
+                      <div className='date-range-container'>
+                        <h2>When are you going?</h2>
+                        <DateRangePicker
+                            startDate={startDate}
+                            startDateId="your_unique_start_date_id" 
+                            endDate={endDate} 
+                            endDateId="your_unique_end_date_id"
+                            onDatesChange={({ startDate, endDate }) => {
+                                setStartDate(startDate);
+                                setEndDate(endDate);
+                            }} 
+                            focusedInput={focusedInput} 
+                            onFocusChange={focusedInput => setFocusedInput(focusedInput)} 
+                        />
+                        <div className='add-destination-buttons'>
+                          <button className='nimbus-button' onClick={() => navigate(`/trip/${id}`)}>Go Back </button>                  
+                          <button className='nimbus-button' disabled={isDisabled}  onClick={() => generateItinerary()}>Generate Itinerary </button>
+                        </div>
+                      </div>
+                    </div>
                 </div>
-              </div>
-            </div>
-        </div>
-    ): <div>
+            ): <div>
 
-      <h1>Generating Itinerary...</h1>
-        <div className="loading-spinner">
-              <img src={process.env.PUBLIC_URL + '/nimbus.png'} alt="Loading" />
-            </div>
+              <h1>Generating Itinerary...</h1>
+                <div className="loading-spinner">
+                      <img src={process.env.PUBLIC_URL + '/nimbus.png'} alt="Loading" />
+                    </div>
 
-            </div>
-  );
+                    </div>
+        }
+
+      </div>
+    </div> : ""
+  )
 }
 
     

@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom';
 import retrieveImage from '../../utils/retrieveImage';
 
 
-
 function CreateTrip() {
   const INITIAL_TRIP_DATA = {
     name: "",
@@ -24,6 +23,10 @@ function CreateTrip() {
     try {
 
       let tripImageURL = await retrieveImage(tripData.name)
+      
+      const img = new Image();
+      img.src = tripImageURL;
+
 
 
       let response = await API.graphql({
@@ -34,10 +37,17 @@ function CreateTrip() {
           imageURL: tripImageURL
         }},
         authMode: "AMAZON_COGNITO_USER_POOLS"
-      });
-      
+      });      
 
-      navigate(`/trip/${response.data.createTrip.id}/add-destination`); 
+
+      if (img.complete) {
+        navigate(`/trip/${response.data.createTrip.id}/add-destination`); 
+      }
+
+      img.onload = () => {
+        navigate(`/trip/${response.data.createTrip.id}/add-destination`); 
+      }
+
     } catch (error) {
       console.error('Error creating trip:', error);
     };
@@ -55,6 +65,16 @@ function CreateTrip() {
 
   
   return (
+
+
+    <div className='nimbus-card-trip-detail'>
+
+      <div className='nimbus-card-img-container'>
+        <div className='nimbus-card-img' style={{ backgroundImage: `url(https://clipart-library.com/images/8czrjKeEi.jpg)` }}/>
+      </div>
+
+      <div className='nimbus-card-trip-detail-details'>
+        
     <div>
       <h1>Create Trip</h1>
       <form onSubmit={handleSubmit}>
@@ -77,6 +97,8 @@ function CreateTrip() {
             />
         <button className='nimbus-button' style={{width: 8 + 'em'}} type='submit'>Create Trip</button>
       </form>
+    </div>
+    </div>
     </div>
   );
 }

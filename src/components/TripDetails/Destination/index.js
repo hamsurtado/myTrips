@@ -10,9 +10,11 @@ const Destination = ({destination, onDeleteDestination, isExpanded}) => {
     return (
         <div class={`nimbus-card destination-card ${isExpanded ? 'destination-card-small' : 'destination-card-wide'}`} onClick={() => navigate(`/trip/${destination.tripId}/destination/${destination.id}`)}>
 
-            <div className='nimbus-card-img-container' style={{ 
-                backgroundImage:     `url(${JSON.parse(destination.itinerary)["header"]})` 
-            }}/>
+            <div className='nimbus-card-img-container'>
+                <div className='nimbus-card-img' style={{ 
+                    backgroundImage:     `url(${JSON.parse(destination.itinerary)["header"]})` 
+                    }}/>
+            </div>
 
             <div className='nimbus-card-details'>
                 

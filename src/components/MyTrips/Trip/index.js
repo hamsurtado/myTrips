@@ -7,7 +7,9 @@ const Trip = ({trip, onDeleteTrip}) => {
     
     return (
         <div className='nimbus-card' onClick={() => navigate(`/trip/${trip.id}`)}>
-            <div className='nimbus-card-img-container'  style={{ backgroundImage: `url(${trip.imageURL})` }}/>
+            <div className='nimbus-card-img-container'>
+                <div className='nimbus-card-img' style={{ backgroundImage: `url(${trip?.imageURL})` }}/>
+            </div>
 
 
 

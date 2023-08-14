@@ -16,7 +16,7 @@ async function retrieveImage(query, size = "Large") {
     }
 
     const data = await response.json();
-    const randomIndex = Math.floor(Math.random() * data.value.length);
+    const randomIndex = Math.floor(Math.random() * Math.min(10, data.value.length));
     return data.value[randomIndex].contentUrl;
 
   } catch (error) {

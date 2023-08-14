@@ -3,14 +3,16 @@ import { Auth } from 'aws-amplify';
 import { useNavigate } from 'react-router-dom';
 import { listDestinations } from '../../graphql/queries';
 import { API } from 'aws-amplify';
-import Destination from '../TripDetails/Destination';
+import Trip from '../MyTrips/Trip';
+import { getTrip } from '../../graphql/queries';
 
 function Home() {
 
 
   const [user, setUser] = useState(null);
   const [hasLoaded, setHasLoaded] = useState(false)
-  const [destinations, setDestinations] = useState([]);
+  const [trip, setTrip] = useState(null);
+  const [upcomingDestinations, setUpcomingDestinations] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -25,6 +27,7 @@ function Home() {
             variables: {},
             authMode: "AMAZON_COGNITO_USER_POOLS"
           });
+
           const currentDate = new Date().toLocaleDateString('en-US', {
             year: 'numeric',
             month: '2-digit',
@@ -43,9 +46,14 @@ function Home() {
             }
           });
 
-          debugger;
-
-          setDestinations(upcomingDestinations)
+          const getTripResponse = await API.graphql({
+            query: getTrip,
+                variables: { id: upcomingDestinations[0].tripId},
+                authMode: "AMAZON_COGNITO_USER_POOLS"
+            });
+          
+          setTrip(getTripResponse.data.getTrip)
+          setUpcomingDestinations(upcomingDestinations)
           setHasLoaded(true)
           
         } catch (error) {
@@ -60,15 +68,14 @@ function Home() {
       <h1>Welcome, {user && user.attributes.given_name}!</h1>
       {hasLoaded ? <div>
       {
-       destinations.length > 0 ?
+       upcomingDestinations.length > 0 ?
       <div className='home-destination-container'>
       <h2>Your Next Trip is Coming Up Soon 💙 !</h2>
-      <Destination
-        key={destinations[0]?.id}
-        destination={destinations[0]}
-        isExpanded={true}
-        onDeleteDestination={() => {}}
-      /></div> : 
+      <Trip
+            key={trip.id}
+            trip={trip}
+            onDeleteTrip={() => {}}
+          /></div> : 
       <div>
       <h2> You don't have any upcoming trips planned 🥲</h2>
       <h2>Plan a trip!</h2>

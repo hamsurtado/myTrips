@@ -95,7 +95,7 @@ function TripDetails({ isExpanded }) {
 
     const deleteGivenDestination = async(destinationId) => {
         const choice = window.confirm(
-            "Are you sure you want to delete destination?"
+            "Are you sure you want to delete this destination?"
           )
           if (choice) {
             try {
@@ -124,7 +124,9 @@ return(
         {trip === null ? '': 
         
         <div className='nimbus-card-trip-detail'>
-            <div className='nimbus-card-img-container'  style={{ backgroundImage: `url(${trip.imageURL})` }}/>
+            <div className='nimbus-card-img-container'>
+                <div className='nimbus-card-img' style={{ backgroundImage: `url(${trip?.imageURL})` }}/>
+            </div>
             <div className='edit-button'>
                 <IconButton className='edit-button image-regenerate-button' onClick={regenerateImage}>
                     Refresh Trip Image &nbsp;

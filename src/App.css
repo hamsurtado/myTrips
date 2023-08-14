@@ -89,6 +89,10 @@
     width: calc(100% + 2em) !important;
   }
 
+  .trip-name {
+    margin-top: 0 !important;
+  }
+
 }
 
 
@@ -239,10 +243,10 @@ h2 {
   }
 }
 
-.home-destination-container .destination-card {
+.home-destination-container .nimbus-card {
   filter: none !important;
 }
 
-.home-destination-container .destination-buttons {
+.home-destination-container .trip-buttons {
   visibility: hidden;
 }
