@@ -183,7 +183,7 @@ function AddDestination() {
                 </div>
             ): <div>
 
-              <h1>Generating Itinerary...</h1>
+              <h1>Generating Itinerary for {endDate.diff(startDate, 'days')} days in {destination}...</h1>
                 <div className="loading-spinner">
                       <img src={process.env.PUBLIC_URL + '/nimbus.png'} alt="Loading" />
                     </div>
