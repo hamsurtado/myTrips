@@ -73,7 +73,7 @@ function Home() {
 
   return (
     <div>
-      <h1>Welcome, {user && user.attributes.given_name.split(" ")[0]}!</h1>
+      <h1>Welcome, {user && user.attributes.given_name?.split(" ")[0]}!</h1>
       {hasLoaded ? <div>
       {
        upcomingDestinations.length > 0 ?
