@@ -3,6 +3,8 @@ import { listTrips } from '../../graphql/queries';
 import { useEffect, useState } from 'react';
 import { API } from 'aws-amplify';
 import * as mutations from '../../graphql/mutations';
+import { listDestinations } from '../../graphql/queries';
+import { deleteDestination } from '../../graphql/mutations';
 import Trip from './Trip/index.js'
 import TripHome from '../TripDetails/index.js'
 import "./MyTrips.css"
@@ -10,6 +12,7 @@ import "./MyTrips.css"
 function MyTrips() {
 
   const [trips, setTrips] = useState([]);
+  const [hasLoaded, setHasLoaded] = useState(false)
 
   useEffect(() => {
     const getTrips = async() => {
@@ -20,6 +23,7 @@ function MyTrips() {
           authMode: "AMAZON_COGNITO_USER_POOLS"
         });
         setTrips(trips.data.listTrips.items)
+        setHasLoaded(true)
       } catch (error) {
         console.error('Error creating trip:', error);
       }
@@ -34,6 +38,28 @@ function MyTrips() {
     )
     if (choice) {
       try {
+
+        // delete destinations for trip
+        const destinationResponse = await API.graphql({
+          query: listDestinations,
+          variables: { filter: {tripId: {eq: tripId}} },
+          authMode: "AMAZON_COGNITO_USER_POOLS"
+        });
+
+
+        for (const destination of destinationResponse.data.listDestinations.items) {
+          await API.graphql({
+            query: deleteDestination,
+            variables: {
+              input: {
+                id: destination.id
+              }
+            },
+            authMode: "AMAZON_COGNITO_USER_POOLS"
+          })
+        }
+
+
         await API.graphql({ 
           query: mutations.deleteTrip, 
           variables: { 
@@ -43,6 +69,7 @@ function MyTrips() {
           },
           authMode: "AMAZON_COGNITO_USER_POOLS"
         })
+
   
         setTrips(trips.filter(trip => trip.id != tripId));
         
@@ -58,6 +85,11 @@ function MyTrips() {
   return (
     <div>
       <h1>My Trips</h1>
+
+      { hasLoaded && trips.length === 0 ? 
+        <h2> You don't have any upcoming trips planned 🥲</h2> : "" 
+      }
+
       <div className='nimbus-card-container'>
         { trips?.map((trip) =>  
           <Trip
