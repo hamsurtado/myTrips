@@ -1,6 +1,9 @@
 import React, {useState, useEffect}  from 'react';
-const Itinerary = ({ dayNumber, dayItinerary, isMobile }) => {
-    
+import RefreshIcon from '@mui/icons-material/RefreshRounded';
+import IconButton from '@mui/material/IconButton';
+
+
+const Itinerary = ({ dayNumber, dayItinerary, isMobile, regenerateActivity }) => {
     return (
         <div>
             <div className='day-header'>
@@ -11,11 +14,19 @@ const Itinerary = ({ dayNumber, dayItinerary, isMobile }) => {
             <div className='activity morning-activity'>
                 <div className='activity-description'>
                     {dayItinerary["morning"]}
+                    
                 </div>
 
                 <div className='activity-image-container'>
                     <img className='activity-image' src={dayItinerary['morning-img']}/>
                 </div>
+                <div>
+                <IconButton className='edit-button image-regenerate-button'  onClick={() => {regenerateActivity(dayNumber, "morning")}}>
+                    Change Activity &nbsp;
+                    <RefreshIcon />
+                </IconButton>
+                </div>
+                
             </div>
 
 
@@ -33,6 +44,13 @@ const Itinerary = ({ dayNumber, dayItinerary, isMobile }) => {
                     <div className='afternoon-activity-image-container activity-image-container'>
                         <img className='activity-image' src={dayItinerary['afternoon-img']}/>
                     </div>
+
+                    <div>
+                        <IconButton className='edit-button image-regenerate-button' onClick={() => {regenerateActivity(dayNumber, "afternoon")}}>
+                            Change Activity &nbsp;
+                            <RefreshIcon />
+                        </IconButton>
+                    </div>
                 
                 </React.Fragment> : 
                 
@@ -46,6 +64,13 @@ const Itinerary = ({ dayNumber, dayItinerary, isMobile }) => {
                     <div className='activity-description activity-description'>
                         {dayItinerary["afternoon"]}
                     </div>
+
+                    <div>
+                    <IconButton className='edit-button image-regenerate-button' onClick={() => {regenerateActivity(dayNumber, "afternoon")}}>
+                        Change Activity &nbsp;
+                        <RefreshIcon />
+                    </IconButton>
+                </div>
                     
                 </React.Fragment>}
             </div>
@@ -63,6 +88,13 @@ const Itinerary = ({ dayNumber, dayItinerary, isMobile }) => {
                 <div className='activity-image-container'>
                     <img className='activity-image' src={dayItinerary['evening-img']}/>
                 </div>
+            </div>
+
+            <div>
+                <IconButton className='edit-button image-regenerate-button' onClick={() => {regenerateActivity(dayNumber, "evening")}}>
+                    Change Activity &nbsp;
+                    <RefreshIcon />
+                </IconButton>
             </div>
             
         </div>
