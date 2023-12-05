@@ -34,10 +34,12 @@
             }
           ],
           "defaultAuthentication": {
+            "authenticationType": "API_KEY",
             "apiKeyConfig": {
-              "apiKeyExpirationDays": 7
-            },
-            "authenticationType": "API_KEY"
+              "apiKeyExpirationDays": 365,
+              "apiKeyExpirationDate": "2024-12-04T00:59:43.080Z",
+              "description": ""
+            }
           }
         },
         "GraphQLAPIIdOutput": "db46uiadcngthmc725acqadj4q",
@@ -46,7 +48,7 @@
       },
       "providerPlugin": "awscloudformation",
       "service": "AppSync",
-      "lastPushTimeStamp": "2023-12-05T00:42:57.040Z",
+      "lastPushTimeStamp": "2023-12-05T00:59:47.251Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-mytrips-testing-192452-deployment/amplify-cfn-templates/api/cloudformation-template.json",
         "logicalId": "apimytrips"
