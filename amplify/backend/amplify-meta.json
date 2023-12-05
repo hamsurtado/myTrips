@@ -36,8 +36,8 @@
           "defaultAuthentication": {
             "authenticationType": "API_KEY",
             "apiKeyConfig": {
-              "apiKeyExpirationDays": 365,
-              "apiKeyExpirationDate": "2024-12-04T00:59:43.080Z",
+              "apiKeyExpirationDays": 7,
+              "apiKeyExpirationDate": "2023-12-12T01:27:22.067Z",
               "description": ""
             }
           }
@@ -48,7 +48,7 @@
       },
       "providerPlugin": "awscloudformation",
       "service": "AppSync",
-      "lastPushTimeStamp": "2023-12-05T00:59:47.251Z",
+      "lastPushTimeStamp": "2023-12-05T01:27:24.876Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-mytrips-testing-192452-deployment/amplify-cfn-templates/api/cloudformation-template.json",
         "logicalId": "apimytrips"
@@ -96,7 +96,7 @@
         "OAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://mynimbusapp.com/\",\"http://localhost:3000/\"],\"LogoutURLs\":[\"https://mynimbusapp.com/\",\"http://localhost:3000/\"]}",
         "UserPoolName": "mytrips44010338_userpool_44010338"
       },
-      "lastPushTimeStamp": "2023-12-05T00:42:57.041Z",
+      "lastPushTimeStamp": "2023-12-05T01:26:28.658Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-mytrips-testing-192452-deployment/amplify-cfn-templates/auth/mytrips44010338-cloudformation-template.json",
         "logicalId": "authmytrips44010338"
