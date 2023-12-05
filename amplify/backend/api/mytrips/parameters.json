@@ -7,5 +7,6 @@
       "authmytrips44010338",
       "Outputs.UserPoolId"
     ]
-  }
+  },
+  "APIKeyExpirationEpoch": "-1"
 }
